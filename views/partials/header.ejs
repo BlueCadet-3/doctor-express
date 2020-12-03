@@ -5,31 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
   <title><%= title %></title>
 </head>
 <body>
 
-  <!-- <nav>
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a></li>
-    </ul>
-  </nav> -->
-
-  <nav>
-    <img src="/images/camera.svg">
-    <a href="/movies" <%- title === 'All Movies' ? 'class="active"' : '' %>>ALL MOVIES</a>
-    <% if (user) { %>
-      <a href="/performers/new"	<%- title === 'Add Performer' ? 'class="active"' : '' %>>
-      ADD PERFORMER</a>
-      <a href="/movies/new" <%- title === 'Add Movie' ? 'class="active"' : '' %>>ADD MOVIE</a>
-      <a href="/logout">LOG OUT</a>
-    <% } else { %>
-      <a href="/auth/google" class="login">LOG IN&nbsp;
-        <!-- <img src="https://i.imgur.com/FHjYyi0.png"> -->
+<nav id="topnav">
+  <% if (user) { %>
+    <img src="/images/doctor.png" alt="doctor" id="doctor">
+    <h1 id="title">Doctor Express</h1>
+    <img src="<%= user.avatar %>" alt="avatar" id="avatar">
+    <button id="sign-out">
+      <a href="/logout"><i class="fa fa-sign-out">Sign Out</i></a>
+    </button>
+  <% } else { %>
+      <img src="/images/doctor.png" alt="doctor">
+      <h1 id="title">Doctor Express</h1>
+      <a href="/auth/google" id="sign-in">
+        <img src="/images/google-sign-in.png" alt="Sign in with Google">
       </a>
+    </li>
     <% } %>
-  </nav>
+  </ul>
+</nav> 
 
   <main>
-    <h1><%= title %></h1>
