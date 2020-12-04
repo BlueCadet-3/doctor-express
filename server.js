@@ -41,6 +41,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// relieves from having to pass user: req.user every time a view is rendered
 app.use(function(req, res, next) {
   res.locals.user = req.user;
   next();

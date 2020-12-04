@@ -6,7 +6,8 @@ module.exports = {
 
 function show(req, res) {
   Patient.findById(req.params.id, function(err, patient) {
-    Note
-    res.render('patients/show', {title: 'Patient Portal - Doctor Express', patient})
+    Patient.find({ notes: {} }, function(err, notes) {
+      res.render('patients/show', {title: 'Patient Portal - Doctor Express', patient, notes})
+    });
   });
 }

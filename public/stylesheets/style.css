@@ -87,14 +87,18 @@ img {
   margin-right: 1vmin;
 }
 
-#avatar {
+div#avatar {
   grid-column: 10;
+  padding-right: 1vmin;
+}
+
+img#avatar {
   border-radius: 50%;
   border: 2px dotted var(--txt-01);
   padding: 0.3vmin;
 }
 
-#avatar:hover {
+img#avatar:hover {
   border: 2px dotted var(--txt-02);
   cursor: pointer;
 }
@@ -117,6 +121,7 @@ h2 {
 
 #patient-notes {
   width: 60vw;
+  height: inherit;
   overflow-y: scroll;
 }
 

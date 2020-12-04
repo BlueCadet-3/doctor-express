@@ -31,12 +31,10 @@ const patientSchema = new Schema({
   height: Number,
   weight: Number,
   bloodType: String,
-  medications: [String],
+  medications: [medicationSchema],
   notes: [noteSchema]
 }, {
   timestamps: true
 });
 
-module.exports = mongoose.model('Patient', patientSchema),
-                 mongoose.model('Note', noteSchema);
-
+module.exports = mongoose.model('Patient', patientSchema);
