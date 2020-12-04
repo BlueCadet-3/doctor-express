@@ -14,15 +14,3 @@ const userSchema = new Schema({
 });
 
 module.exports = mongoose.model('User', userSchema);
-
-//   firstName: String,
-//   lastName: String,
-//   birthDate: Date,
-//   height: Number,
-//   weight: Number,
-//   bloodType: String,
-//   medications: [],
-//   notes: []
-// }, {
-//   timestamps: true
-// });
