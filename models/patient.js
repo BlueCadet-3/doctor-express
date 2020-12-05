@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const medicationSchema = new Schema({
-  patient: {
-    type: Schema.Types.ObjectId, 
-    ref: 'Patient'
-  },
   name: String,
   dosage: String,
   frequency: String,
@@ -15,16 +11,16 @@ const medicationSchema = new Schema({
 });
 
 const noteSchema = new Schema({
-  patient: {
-    type: Schema.Types.ObjectId, 
-    ref: 'Patient'
-  },
-  note: String
+  text: String
 }, {
   timestamps: true
 });
 
 const patientSchema = new Schema({
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
   firstName: String,
   lastName: String,
   birthDate: Date,

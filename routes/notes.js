@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+
 const notesCtrl = require('../controllers/notes');
 
 router.get('/patients/:id/notes/new', notesCtrl.new);

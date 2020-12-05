@@ -30,31 +30,8 @@
 
 <div id="patient-notes">
 
-  <form id="add-note" method="POST" action="/patients/<%= user._id %>/notes">
-    <textarea id="add-note" name="add-note">
-      Add new note here...
-    </textarea>
-    <input type="submit" value="Add Note">
-  </form>
-
+  <a href="/patients/<%= user._id %>/notes/new">Create New Note</a>
 
 </div>
-
-
-<!-- <div id="patient-medications"><
-
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, officiis nulla esse facere voluptate obcaecati! Ducimus distinctio, nisi consectetur quos mollitia sunt veritatis beatae, cupiditate ex accusamus voluptatem quasi cum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque minus at facere commodi, sed quis similique ex reiciendis vitae repudiandae quod maiores eligendi vero nobis cum atque. Soluta, libero minus.
-  </p>
-
-</div>
-
-<div id="patient-appointments">
-
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, officiis nulla esse facere voluptate obcaecati! Ducimus distinctio, nisi consectetur quos mollitia sunt veritatis beatae, cupiditate ex accusamus voluptatem quasi cum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque minus at facere commodi, sed quis similique ex reiciendis vitae repudiandae quod maiores eligendi vero nobis cum atque. Soluta, libero minus.
-  </p>
-
-</div> -->
 
 <%- include('../partials/footer') %>

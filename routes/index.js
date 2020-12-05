@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 const passport = require('passport');
+const patient = require('../models/patient');
+const user = require('../models/user');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -29,4 +31,4 @@ router.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
-module.exports = router;
+module.exports = router; 

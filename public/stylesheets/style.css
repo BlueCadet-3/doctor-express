@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100;1,300&display=swap');
 
 * {
   box-sizing: border-box;
@@ -27,15 +28,14 @@
 
 ::-webkit-scrollbar
 {
-	width: 12px;
-	background-color: #F5F5F5;
+	width: 1vmin;
 }
 
 ::-webkit-scrollbar-thumb
 {
+	background-color: var(--bg-02);
 	border-radius: 10px;
 	box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: var(--bg-02);
 }
 
 body {
@@ -58,6 +58,7 @@ body {
 
 img {
   max-width: 100%;
+  max-height: 100%;
   -webkit-user-drag: none;
 }
 
@@ -104,19 +105,24 @@ img#avatar:hover {
 }
 
 main {
+  background: var(--bg-02);
   grid-area: main;
   overflow: auto;
 }
 
-h2 {
-  background: #ccc;
-  height: 10vmin;
-  line-height: 10vmin;
-  font-size: 3vmin;
+h2#index {
+  background-color: var(--bg-04);
+  height: 15vmin;
+  line-height: 15vmin;
+  font-size: 4vmin;
   padding-left: 6vmin;
   position: -webkit-sticky;
   position: sticky;
+  justify-content: center;
+  align-items: center;
   top: 0px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
 }
 
 #patient-notes {
