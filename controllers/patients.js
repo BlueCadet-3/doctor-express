@@ -2,27 +2,46 @@ const User = require('../models/user');
 const Patient = require('../models/patient');
 
 module.exports = {
-  new: newPatient,
+  create,
   show
 }
 
-function newPatient(req, res) {
-  if(Patient.findById !== )
-  res.render('patients/new', { title: 'New Patient Form'});
-}
-
-function show(req, res) {
-  Patient.findById(req.params.id, function(err, patient) {
-    res.render('patients/show', {
-    title: 'Patient Portal - Doctor Express',
-    patient
-    });
+function create(req, res) {
+  const patient = new Patient(req.body);
+  patient.save(function(err) {
+    if(err) return res.render('patients/new');
+    res.redirect(`patients/show`);
   });
 }
 
+function show(req, res) {
+  Patient.find({ user: req.user._id }, function(err, patients) {
+    console.log(req.user._id);
+    // if(req.user._id !== patient._id) {
+      if(!patients.length) {
+      res.render('patients/new', { title: 'New Patient' })
+    } else {
+        res.render('patients/show', {
+          title: 'Patient Portal - Doctor Express',
+          patient: patients[0]
+        })
+    }
+  })
+}
+
 // function show(req, res) {
-//   Patient.findById(req.params.id)
-//   .populate('notes').exec(function(err, patient) {
-//     res.render('patients/show', { title: 'Notes?', patient});
+  //   Patient.findById(req.params.id, function(err, patient) {
+    //     Patient.find({ notes: {} }, function(err, notes) {
+      //       res.render('patients/show', {title: 'Patient Portal - Doctor Express', patient, notes})
+      //     });
+      //   });
+// }
+
+// function create(req, res) {
+//   patientId = req.params.id;
+//   req.body.user = req.user._id;
+//   Patient.create(req.body, function(err, patient) {
+//     res.redirect(`/patients/${patientId}`);
 //   });
 // }
+

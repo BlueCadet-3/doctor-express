@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@700&display=swap');
+<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100;1,300&display=swap');
+=======
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap');
+>>>>>>> user-to-patient
 
 * {
   box-sizing: border-box;
@@ -39,6 +43,7 @@
 }
 
 body {
+  background-color: var(--bg-02);
   overflow-x: hidden;
   height: 100vh;
   display: grid;
@@ -58,11 +63,15 @@ body {
 
 img {
   max-width: 100%;
+<<<<<<< HEAD
   max-height: 100%;
+=======
+  height: auto;
+>>>>>>> user-to-patient
   -webkit-user-drag: none;
 }
 
-#topnav {
+nav#topnav {
   background-color: var(--bg-01);
   grid-area: topnav;
   display: grid;
@@ -105,16 +114,32 @@ img#avatar:hover {
 }
 
 main {
+<<<<<<< HEAD
   background: var(--bg-02);
+=======
+  background-color: var(--bg-02);
+>>>>>>> user-to-patient
   grid-area: main;
   overflow: auto;
 }
 
+<<<<<<< HEAD
 h2#index {
   background-color: var(--bg-04);
   height: 15vmin;
   line-height: 15vmin;
   font-size: 4vmin;
+=======
+h2 {
+  background-color: var(--txt-01);
+  height: 20vmin;
+  line-height: 20vmin;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 4vmin;
+  letter-spacing: 0.2vmin;
+  color: var(--bg-01);
+>>>>>>> user-to-patient
   padding-left: 6vmin;
   position: -webkit-sticky;
   position: sticky;
@@ -146,4 +171,31 @@ footer a {
 
 footer a:hover {
   color: var(--txt-02);
+}
+
+/* New patient form */
+
+div#new-patient {
+  display: flex;
+  justify-content: center;
+  padding: 5vmin;
+}
+
+form#new-patient {
+  background-color: var(--bg-04);
+  width: 60vw;
+  height: 60vh;
+  justify-content: center;
+  border: 4px dotted var(--bg-01);
+  border-radius: 4vmin;
+}
+
+label {
+  padding: 3vmin;
+}
+
+input {
+  width: 90%;
+  border-radius: 3vmin;
+  padding: 1.2vmin;
 }

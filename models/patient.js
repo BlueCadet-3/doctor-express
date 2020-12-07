@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const medicationSchema = new Schema({
+  user: {
+    type: Schema.Types.ObjectId, 
+    ref: 'User'
+  },
   name: String,
   dosage: String,
   frequency: String,
@@ -11,7 +15,11 @@ const medicationSchema = new Schema({
 });
 
 const noteSchema = new Schema({
-  text: String
+  user: {
+    type: Schema.Types.ObjectId, 
+    ref: 'User'
+  },
+  note: String
 }, {
   timestamps: true
 });
