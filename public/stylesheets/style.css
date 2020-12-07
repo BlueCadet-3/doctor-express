@@ -1,3 +1,5 @@
+/* Global style  */ 
+
 @import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap');
 
@@ -45,16 +47,22 @@ body {
   display: grid;
   grid-template-rows: repeat(10, 1fr);
   grid-template-areas: 
-    "topnav"
-    "main"
-    "main"
-    "main"
-    "main"
-    "main"
-    "main"
-    "main"
-    "main"
-    "footer"
+  "topnav"
+  "main"
+  "main"
+  "main"
+  "main"
+  "main"
+  "main"
+  "main"
+  "main"
+  "footer"
+}
+
+main {
+  background-color: var(--bg-02);
+  grid-area: main;
+  overflow: auto;
 }
 
 img {
@@ -62,6 +70,25 @@ img {
   height: auto;
   -webkit-user-drag: none;
 }
+
+footer {
+  background-color: var(--bg-01);
+  grid-area: footer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 6vmin;
+}
+
+footer a {
+  color: var(--txt-01);
+}
+
+footer a:hover {
+  color: var(--txt-02);
+}
+
+/* Top navigation bar */
 
 nav#topnav {
   background-color: var(--bg-01);
@@ -72,19 +99,19 @@ nav#topnav {
   color: var(--txt-01);
 }
 
-#doctor {
+img#doctor {
   grid-column: 1;
   width: 100%;
 }
 
-#title {
+h1#title {
   grid-column: 2 / 7;
   font-family: 'Sansita Swashed', 'Monaco';
   font-size: 7vmin;
   user-select: none;
 }
 
-#sign-in {
+img#sign-in {
   grid-column: 9 / span 2;
   margin-right: 1vmin;
 }
@@ -105,13 +132,9 @@ img#avatar:hover {
   cursor: pointer;
 }
 
-main {
-  background-color: var(--bg-02);
-  grid-area: main;
-  overflow: auto;
-}
+/* Index page */ 
 
-h2 {
+h2.index {
   background-color: var(--txt-01);
   height: 20vmin;
   line-height: 20vmin;
@@ -134,23 +157,6 @@ h2 {
   width: 60vw;
   height: inherit;
   overflow-y: scroll;
-}
-
-footer {
-  background-color: var(--bg-01);
-  grid-area: footer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 6vmin;
-}
-
-footer a {
-  color: var(--txt-01);
-}
-
-footer a:hover {
-  color: var(--txt-02);
 }
 
 /* New patient form */

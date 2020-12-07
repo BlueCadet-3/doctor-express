@@ -5,5 +5,6 @@ const notesCtrl = require('../controllers/notes');
 
 // router.get('/patients/:id/notes/new', notesCtrl.new);
 router.post('/patients/:id/notes', notesCtrl.create);
+router.delete('/notes/:id', notesCtrl.delete);
 
 module.exports = router;
