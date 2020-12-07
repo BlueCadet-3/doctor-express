@@ -30,7 +30,27 @@
 
 <div id="patient-notes">
 
-  <a href="/patients/<%= user._id %>/notes/new">Create New Note</a>
+  <h2>Notes</h2>
+
+  <% if (patient.notes.length) { %>
+
+    <% patient.notes.forEach(function(n) { %>
+    <%= n.note %>
+    <% }); %>
+    <% } %>
+
+
+  <h2>Add A New Note</h2>
+
+  <form action="/patients/<%= patient._id %>/notes" method="POST" id="new-note">
+    <label>
+      Note
+      <textarea name="note" id="new-note" cols="30" rows="10"></textarea>
+    </label> <br>
+  
+    <button type="submit">Create New Note</button>
+  
+  </form>
 
 </div>
 
