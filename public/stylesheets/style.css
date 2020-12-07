@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@700&display=swap');
-<<<<<<< HEAD
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100;1,300&display=swap');
-=======
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap');
->>>>>>> user-to-patient
 
 * {
   box-sizing: border-box;
@@ -63,11 +59,7 @@ body {
 
 img {
   max-width: 100%;
-<<<<<<< HEAD
-  max-height: 100%;
-=======
   height: auto;
->>>>>>> user-to-patient
   -webkit-user-drag: none;
 }
 
@@ -114,22 +106,11 @@ img#avatar:hover {
 }
 
 main {
-<<<<<<< HEAD
-  background: var(--bg-02);
-=======
   background-color: var(--bg-02);
->>>>>>> user-to-patient
   grid-area: main;
   overflow: auto;
 }
 
-<<<<<<< HEAD
-h2#index {
-  background-color: var(--bg-04);
-  height: 15vmin;
-  line-height: 15vmin;
-  font-size: 4vmin;
-=======
 h2 {
   background-color: var(--txt-01);
   height: 20vmin;
@@ -139,7 +120,6 @@ h2 {
   font-size: 4vmin;
   letter-spacing: 0.2vmin;
   color: var(--bg-01);
->>>>>>> user-to-patient
   padding-left: 6vmin;
   position: -webkit-sticky;
   position: sticky;

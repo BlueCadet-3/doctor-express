@@ -1,8 +1,7 @@
 const Patient = require('../models/patient');
-const Note = require('../models/note');
 
 module.exports = {
-  new: newNote,
+  // new: newNote,
   create
 };
 
