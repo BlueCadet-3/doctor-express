@@ -105,7 +105,7 @@ img#doctor {
 }
 
 h1#title {
-  grid-column: 2 / 7;
+  grid-column: 2 / span 6;
   font-family: 'Sansita Swashed', 'Monaco';
   font-size: 7vmin;
   user-select: none;
@@ -116,9 +116,22 @@ a#sign-in {
   margin-right: 1vmin;
 }
 
+div#sign-out {
+  grid-column: 9;
+  padding-left: 4vmin;
+  user-select: none;
+}
+
+img#sign-out {
+  width: 4vmin;
+  height: auto;
+}
+
 div#avatar {
   grid-column: 10;
   padding-right: 1vmin;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 img#avatar {
@@ -128,7 +141,7 @@ img#avatar {
 }
 
 img#avatar:hover {
-  border: 0.2rem dotted var(--txt-02);
+  border: 0.2rem dotted var(--bg-02);
   cursor: pointer;
 }
 
@@ -177,8 +190,14 @@ label {
 
 input {
   width: 90%;
+  border: 1px solid var(--bg-01);
   border-radius: 3vmin;
+  outline: none;
   padding: 1.2vmin;
+}
+
+input:focus {
+  border: 1px dashed var(--bg-03);
 }
 
 /* Patient portal */
@@ -189,7 +208,21 @@ section#patient-portal {
   width: 100%;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
+  user-zoom: none;
 }
+
+button.delete {
+  background-color: var(--bg-03);
+  cursor: pointer;
+  user-select: none;
+}
+
+img.delete {
+  width: 3vmin;
+  height: auto;
+}
+
+/* Patient notes */
 
 div#patient-notes {
   grid-column: 1 / 7;
@@ -198,15 +231,27 @@ div#patient-notes {
   overflow-y: scroll;
 }
 
-h3.note {
+div.note-header {
   background-color: var(--bg-03);
-  font-family: Roboto, -apple-system, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 2rem;
-  color: var(--bg-01);
   position: -webkit-sticky;
   position: sticky;
   top: 0px;
   padding: 2vmin;
+  display: flex;
+  justify-content: space-between;
+}
+
+h3.note {
+  font-family: Roboto, -apple-system, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 3vmin;
+  font-weight: 800;
+  color: var(--bg-01);
+  user-select: none;
+}
+
+p.note {
+  padding: 3vmin;
+  user-select: none;
 }
 
 textarea#new-note {
@@ -216,53 +261,62 @@ textarea#new-note {
   max-height: 40vh;
 }
 
-div#medications {
-  grid-column: 8 / 10;
-  grid-row: 1 / 5;
-  height: 40vh;
+/* Patient info display */
+
+div#patient-info {
+  grid-column: 7 / span 4;
+  grid-row: ;
+}
+
+
+/* Patient medications */
+
+div#patient-medications {
+  grid-column: 7 / span 4;
+  grid-row: 5 / span 6;
   overflow-y: scroll;
 }
 
 div.medication-card {
-  background-color: transparent;
-  grid-column: 8 / 10;
-  grid-row: 1 / 5;
-  border: 1px solid #f1f1f1;
-  border-radius: 2vmin;
-  perspective: 1000px;
-}
-
-.medication-card-front, .medication-card-back {
-  position: absolute;
   width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
-  backface-visibility: hidden;
+  max-width: 100%;
 }
 
-.medication-card:hover .medication-card-inner {
-  transform: rotateY(180deg);
-}
-
-.medication-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  border-radius: 2vmin;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-
-/* Style the front side (fallback if image is missing) */
-.medication-card-front {
+div.medication-header {
   background-color: var(--bg-03);
-  color: black;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  padding: 2vmin;
+  display: flex;
+  justify-content: space-between;
 }
 
-/* Style the back side */
-.medication-card-back {
-  background-color: var(--bg-01);
-  color: white;
-  transform: rotateY(180deg);
+h3.medication-header {
+  font-family: Roboto, -apple-system, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 3vmin;
+  font-weight: 700;
+  color: var(--bg-01);
+  user-select: none;
+}
+
+div.medication-info {
+  width: 100%;
+  max-width: 100%;
+  background-color: var(--txt-02);
+  display: flex;
+  justify-content: space-between;
+  border: 0.5rem solid var(--bg-04);
+  padding: 2vmin 2vmin;
+  user-select: none;
+}
+
+h4.medication-key {
+  font-family: 'Roboto';
+  color: var(--bg-01);
+}
+
+p.medication-value {
+  color: var(--bg-01);
+  font-size: 1.7vmin;
 }

@@ -14,8 +14,13 @@
   <% if (user) { %>
     <img src="/images/doctor.png" alt="doctor" id="doctor">
     <h1 id="title">Doctor Express</h1>
+    <div id="sign-out">
+      <a href="/logout">
+        <img src="/images/sign-out.png" alt="sign-out" id="sign-out">
+      </a>
+    </div>
     <div id="avatar">
-    <a href="/patients/<%= user._id %>">
+    <a href="/patients/<%= user._id %>" id="avatar">
     <img src="<%= user.avatar %>" alt="avatar" id="avatar">
     </a>
     </div>  
