@@ -111,7 +111,7 @@ h1#title {
   user-select: none;
 }
 
-img#sign-in {
+a#sign-in {
   grid-column: 9 / span 2;
   margin-right: 1vmin;
 }
@@ -123,12 +123,12 @@ div#avatar {
 
 img#avatar {
   border-radius: 50%;
-  border: 2px dotted var(--txt-01);
+  border: 0.2rem dotted var(--txt-01);
   padding: 0.3vmin;
 }
 
 img#avatar:hover {
-  border: 2px dotted var(--txt-02);
+  border: 0.2rem dotted var(--txt-02);
   cursor: pointer;
 }
 
@@ -151,12 +151,6 @@ h2.index {
   top: 0px;
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
-}
-
-#patient-notes {
-  width: 60vw;
-  height: inherit;
-  overflow-y: scroll;
 }
 
 /* New patient form */
@@ -184,4 +178,90 @@ input {
   width: 90%;
   border-radius: 3vmin;
   padding: 1.2vmin;
+}
+
+/* Patient portal */
+
+section#patient-portal {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+}
+
+div#patient-notes {
+  grid-column: 1 / 7;
+  grid-row: 1 / 10;
+  height: 80vh;
+  overflow-y: scroll;
+}
+
+h3.note {
+  background-color: var(--bg-03);
+  font-family: Roboto, -apple-system, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 2rem;
+  color: var(--bg-01);
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  padding: 2vmin;
+}
+
+textarea#new-note {
+  width: 100%;
+  height: 20vh;
+  max-width: 100%;
+  max-height: 40vh;
+}
+
+div#medications {
+  grid-column: 8 / 10;
+  grid-row: 1 / 5;
+  height: 40vh;
+  overflow-y: scroll;
+}
+
+div.medication-card {
+  background-color: transparent;
+  grid-column: 8 / 10;
+  grid-row: 1 / 5;
+  border: 1px solid #f1f1f1;
+  border-radius: 2vmin;
+  perspective: 1000px;
+}
+
+.medication-card-front, .medication-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.medication-card:hover .medication-card-inner {
+  transform: rotateY(180deg);
+}
+
+.medication-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  border-radius: 2vmin;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Style the front side (fallback if image is missing) */
+.medication-card-front {
+  background-color: var(--bg-03);
+  color: black;
+}
+
+/* Style the back side */
+.medication-card-back {
+  background-color: var(--bg-01);
+  color: white;
+  transform: rotateY(180deg);
 }
