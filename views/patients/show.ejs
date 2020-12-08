@@ -1,37 +1,97 @@
 <%- include('../partials/header') %>
 
+<section id="patient-portal">
+
 <div id="patient-notes">
 
-  <h2>Notes</h2>
-
   <% if (patient.notes.length) { %>
-
+    
     <% patient.notes.forEach(function(n) { %>
-    <h3 class="note"> <%= n.updatedAt.toLocaleString(); %> </h3> <br>
-    <p class="note"> <%= n.note %> </p> <br> <br>
-    <p>
+    <h3 class="note"> <%= n.updatedAt.toLocaleString(); %> </h3> 
+    <div>
       <% if (user && user._id.equals(n.user)) { %>
         <form action="/notes/<%= n._id %>?_method=DELETE" method="POST">
           <button type="submit">X</button>
         </form>
       <% } %>
-    </p>
+      <br>
+    </div>
+    <p class="note"> <%= n.note %> </p> <br> <br>
     <% }); %>
     <% } %>
 
 
-  <h2>Add A New Note</h2>
+  <h3 class="note">Add A New Note</h2>
 
   <form action="/patients/<%= patient._id %>/notes" method="POST" id="new-note">
-    <label>
-      Note
-      <textarea name="note" id="new-note" cols="30" rows="10"></textarea>
-    </label> <br>
-  
+    <textarea name="note" id="new-note"></textarea> <br>
     <button type="submit">Create New Note</button>
+  </form>
+
+</div>
+
+<% patient.medications.forEach(function(m) { %>
+  <div class="medication-card">
+    <div class="medication-card-inner">
+      <div class="medication-card-front">
+        <p><%= m.name %></p>
+        <p><%= m.dosage %></p>
+        <p><%= m.frequency %></p>
+      </div>
+      <div class="medication-card-back">
+        <p><%= m.notes %></p>
+      <% if (user && user._id.equals(m.user)) { %>
+        <form action="/medications/<%= m._id %>?_method=DELETE" method="POST">
+          <button type="submit">X</button>
+        </form>
+      <% } %>
+      </div> 
+    </div> 
+  </div> 
+<% }); %>
+
+<div class="medication-card">
+
+  <div class="medication-card-inner">
+
+    <div class="medication-card-front">
+      <p>
+        Stuff Stuff Stuff Stuff
+      </p>
+    </div>
+  
+
+<div class="medication-card-back">
+
+  <form action="/patients/<%= patient._id %>/medications" method="POST" id="new-note">
+    <label>
+      Name
+    </label> 
+    <input type="text" name="name">
+    <br>
+    <label>
+      Dosage
+    </label> 
+    <input type="text" name="dosage">
+    <br>
+    <label>
+      Frequency
+    </label> 
+    <input type="text" name="frequency">
+    <br>
+    <label>
+      Notes
+    </label> 
+    <input type="text" name="notes">
+    <br>
+  
+    <button type="submit">Add Medication</button>
   
   </form>
 
 </div>
+</div>
+
+</section>
 
 <%- include('../partials/footer') %>
