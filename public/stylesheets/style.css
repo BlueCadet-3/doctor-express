@@ -151,6 +151,7 @@ h2.index {
   top: 0px;
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
+  user-select: none;
 }
 
 /* New patient form */

@@ -13,6 +13,11 @@
         <form action="/notes/<%= n._id %>?_method=DELETE" method="POST">
           <button type="submit">X</button>
         </form>
+        <form action="/notes/<%= n._id %>?_method=PUT" method="POST">
+          <!-- Value attribute is being set to the comment's current text -->
+          <input name="text" value="<%= n.text %>">
+          <button type="submit">UPDATE COMMENT</button>
+        </form>
       <% } %>
       <br>
     </div>
