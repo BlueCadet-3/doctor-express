@@ -1,6 +1,6 @@
 # Doctor Express
 
-![Doctor Express - Preview](https://imgur.com/d3dppvA.png)
+![Doctor Express - Preview](https://imgur.com/jvlHphx.png)
 
 ## Technologies Used
 
