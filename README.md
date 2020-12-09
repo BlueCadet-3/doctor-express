@@ -1,13 +1,16 @@
 # Doctor Express
 
-<!-- Screenshots -->
+![Doctor Express - Preview](https://imgur.com/d3dppvA.png)
 
 ## Technologies Used
 
 * HTML
 * CSS
-* Node.js
-  * [date-fns](https://www.npmjs.com/package/date-fn) - [[docs]](https://date-fns.org/docs/Getting-Started)                    
+  * [Font Awesome](https://fontawesome.com/)
+  * [Google Fonts](https://fonts.google.com/)
+  * [icons8](https://icons8.com/)
+* JS
+* Node.js                   
   * [dotenv](https://www.npmjs.com/package/dotenv) - [[repo]](https://github.com/motdotla/dotenv#readme)
   * [Express](https://www.npmjs.com/package/express) - [[docs]](http://expressjs.com/en/4x/api.html)
   * [method-override](https://www.npmjs.com/package/method-override) - [[repo]](https://github.com/expressjs/method-override)
@@ -17,8 +20,20 @@
 
 * Heroku
 
+* [MongoDB Cloud](https://www.mongodb.com/cloud)
+
 
 ## Getting Started
 
+Planning took place on the [Trello](https://trello.com/b/PQ61vkrf/doctor-express) platform
+
+The app is deployed on [Heroku](http://doctor-express.herokuapp.com/)
 
 ## Next Steps
+
+* Properly style new patient form
+* Properly style button elements
+* Indent check
+* Condense CSS rules
+* Fix Safari styling
+* Fix full-screen overflow on navigation bar

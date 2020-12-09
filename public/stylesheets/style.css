@@ -412,4 +412,6 @@ h4.medication-key {
 p.medication-value {
   color: var(--bg-01);
   font-size: 1.7vmin;
+  padding-left: 3vmin;
+  text-align: right;
 }
