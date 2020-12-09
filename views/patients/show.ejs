@@ -4,48 +4,69 @@
 
 <div id="patient-notes">
 
+  <div class="note" id="new-note">
+    <div class="note-header">
+      <h3 class="note">Add A New Note</h3>
+    </div>
+
+    <form action="/patients/<%= patient._id %>/notes" method="POST" id="new-note">
+      <textarea name="note" id="new-note"></textarea> <br>
+      <button type="submit" id="new-note">Save</button>
+    </form>
+  </div>
+
   <% if (patient.notes.length) { %>
     <% patient.notes.forEach(function(n) { %>
+    <div class="note">
     <div class="note-header">
     <h3 class="note"> <%= n.updatedAt.toLocaleString(); %> </h3> 
     <% if (user && user._id.equals(n.user)) { %>
+      <div class="toolbar">
+      <button class="edit" onclick="editNote('<%= n._id %>')"><img src="/images/edit.png" alt="edit note"></button>
       <form action="/notes/<%= n._id %>?_method=DELETE" method="POST" class="delete">
-        <button type="submit" class="delete"><img src="/images/delete.png" alt="delete" class="delete"></button>
+        <button type="submit" class="delete"><img src="/images/delete.png" alt="delete" class="delete note"></button>
       </form>
     </div>
-        <form action="/notes/<%= n._id %>?_method=PUT" method="POST">
-          <!-- Value attribute is being set to the comment's current text -->
-          <input name="text" value="<%= n.note %>">
-          <button type="submit">UPDATE COMMENT</button>
-        </form>
+  </div>
       <% } %>
       <br>
+      <div class="edit-note" id="<%= n._id %>" style="display: none">
+        <form action="/notes/<%= n._id %>?_method=PUT" method="POST">
+        <textarea class ="edit-note" name="text"><%= n.note %></textarea><br>
+        <button type="submit">Edit Note</button>
+      </form>
+      </div>
       <p class="note"> <%= n.note %> </p> <br> <br>
+    </div>
+
     <% }); %>
-    <% } %>
-
-
-  <div class="note-header">
-    <h3 class="note">Add A New Note</h3>
-  </div>
-
-  <form action="/patients/<%= patient._id %>/notes" method="POST" id="new-note">
-    <textarea name="note" id="new-note"></textarea> <br>
-    <button type="submit">Create New Note</button>
-  </form>
+  <% } %>
 
 </div>
 
-<div id="patient-info">
-
-  
-
+<div id="patient-profile">
+  <h3 id="patient-info">Patient Profile</h3>
+    <div class="patient-info">
+      <h4  class="patient-key">Name</h4>
+      <p class="patient-value"><%= patient.firstName + " " + patient.lastName %></p>
+    </div>
+    <div class="patient-info">
+      <h4  class="patient-key">Birth Date</h4>
+      <p class="patient-value"><%= patient.birthDate.toLocaleString().split(',')[0]; %></p>
+    </div>
+    <div class="patient-info">
+      <h4  class="patient-key">Height</h4>
+      <p class="patient-value"><%=patient.height %></p>
+    </div>
+    <div class="patient-info">
+      <h4  class="patient-key">Weight</h4>
+      <p class="patient-value"><%=patient.weight %></p>
+    </div>
+    <div class="patient-info">
+      <h4  class="patient-key">Blood Type</h4>
+      <p class="patient-value"><%=patient.bloodType %></p>
+    </div>
 </div>
-
-
-
-
-
 
 <div id="patient-medications">
 <% patient.medications.forEach(function(m) { %>
@@ -72,7 +93,6 @@
       <h4 class="medication-key">Notes</h4>
       <p class="medication-value"><%= m.notes %></p>
     </div>
-
   </div> 
     <% }); %>
 
@@ -98,11 +118,12 @@
       <p class="medication-value"><input type="text" name="notes"></p>
   </div>
   
-    <button type="submit">Add Medication</button>
+    <button type="submit" id="add-medication">Add Medication</button>
   
   </form>
 
   </div>
+
 </div>
 
 </section>
