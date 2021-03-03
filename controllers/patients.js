@@ -17,7 +17,7 @@ function create(req, res) {
 
 function show(req, res) {
   Patient.find({ user: req.user._id }, function(err, patients) {
-      if(!patients.length) {
+    if(!patients.length) {
       res.render('patients/new', { title: 'New Patient' })
     } else {
         res.render('patients/show', {

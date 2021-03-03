@@ -27,7 +27,6 @@ function update(req, res) {
     // if(!noteSubdoc.userId.equals(req.user._id)) return res.redirect(`/patients/${patient._id}`);
     // Update the text of the comment
     noteSubdoc.note = req.body.text;
-    console.log(noteSubdoc.text);
     // Save the updated patient
     patient.save(function(err) {
       // Redirect back to the patient's show view

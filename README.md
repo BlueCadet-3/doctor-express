@@ -37,3 +37,4 @@ The app is deployed on [Heroku](http://doctor-express.herokuapp.com/)
 * Condense CSS rules
 * Fix Safari styling
 * Fix full-screen overflow on navigation bar
+* Add doctor login

@@ -15,30 +15,29 @@
     </form>
   </div>
 
-  <% if (patient.notes.length) { %>
-    <% patient.notes.forEach(function(n) { %>
+<% if (patient.notes.length) { %>
+  <% patient.notes.forEach(function(n) { %>
     <div class="note">
-    <div class="note-header">
-    <h3 class="note"> <%= n.updatedAt.toLocaleString(); %> </h3> 
-    <% if (user && user._id.equals(n.user)) { %>
-      <div class="toolbar">
-      <button class="edit" onclick="editNote('<%= n._id %>')"><img src="/images/edit.png" alt="edit note"></button>
-      <form action="/notes/<%= n._id %>?_method=DELETE" method="POST" class="delete">
-        <button type="submit" class="delete"><img src="/images/delete.png" alt="delete" class="delete note"></button>
-      </form>
-    </div>
-  </div>
-      <% } %>
-      <br>
+      <div class="note-header">
+        <h3 class="note"> <%= n.updatedAt.toLocaleString(); %> </h3> 
+          <% if (user && user._id.equals(n.user)) { %>
+            <div class="toolbar">
+              <button class="edit" onclick="editNote('<%= n._id %>')"><img src="/images/edit.png" alt="edit note"></button>
+              <form action="/notes/<%= n._id %>?_method=DELETE" method="POST" class="delete">
+                <button type="submit" class="delete"><img src="/images/delete.png" alt="delete" class="delete note"></button>
+              </form>
+            </div>
+      </div>
+<% } %> <br>
       <div class="edit-note" id="<%= n._id %>" style="display: none">
         <form action="/notes/<%= n._id %>?_method=PUT" method="POST">
-        <textarea class ="edit-note" name="text"><%= n.note %></textarea><br>
-        <button type="submit">Edit Note</button>
-      </form>
+          <textarea class ="edit-note" name="text"><%= n.note %></textarea><br>
+          <button type="submit">Edit Note</button>
+        </form>
       </div>
-      <p class="note"> <%= n.note %> </p> <br> <br>
+        <p class="note"> <%= n.note %> </p> <br> <br>
     </div>
-
+    
     <% }); %>
   <% } %>
 
