@@ -1,0 +1,42 @@
+<%- include('../partials/header') %>
+
+<div id="new-patient">
+
+<form action="/patients" method="POST" id="new-patient">
+  <label>
+    First Name
+  </label> 
+  <input type="text" name="firstName">
+  <br>
+  <label>
+    Last Name
+  </label> 
+  <input type="text" name="lastName">
+  <br>
+  <label>
+    Date of Birth
+  </label> 
+  <input type="text" name="birthDate">
+  <br>
+  <label>
+    Height
+  </label> 
+  <input type="text" name="height">
+  <br>
+  <label>
+    Weight
+  </label> 
+  <input type="text" name="weight">
+  <br>
+  <label>
+    Blood Type
+  </label> 
+  <input type="text" name="bloodType">
+  <br>
+
+  <button type="submit">Add Patient Information</button>
+</form>
+
+</div>
+
+<%- include('../partials/footer') %>
