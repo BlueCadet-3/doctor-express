@@ -1,6 +1,6 @@
-const medicationsCtrl = require('../controllers/medications');
+const medicationsCtrl = require("../controllers/medications");
 
-router.post('/patients/:id/medications', medicationsCtrl.create);
-router.delete('/medications/:id', medicationsCtrl.delete);
+router.post("/patients/:id/medications", medicationsCtrl.create);
+router.delete("/medications/:id", medicationsCtrl.delete);
 
 module.exports = router;

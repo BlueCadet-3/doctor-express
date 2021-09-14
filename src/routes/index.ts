@@ -4,7 +4,7 @@ const router = express.Router();
 router.get(
 	"/",
 	(
-		req: any,
+		_req: any,
 		res: { render: (arg0: string, arg1: { title: string }) => void }
 	) => {
 		res.render("index", { title: "Doctor Express" });
