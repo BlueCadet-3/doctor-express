@@ -1,6 +1,3 @@
-const express = require('express');
-const router = express.Router();
-
 const medicationsCtrl = require('../controllers/medications');
 
 router.post('/patients/:id/medications', medicationsCtrl.create);
