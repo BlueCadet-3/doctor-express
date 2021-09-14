@@ -48,7 +48,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // relieves from having to pass user: req.user every time a view is rendered
-app.use(function (req, res, next) {
+app.use(function (
+	req: { user: any },
+	res: { locals: { user: any } },
+	next: () => void
+) {
 	res.locals.user = req.user;
 	next();
 });
@@ -60,12 +64,21 @@ app.use("/", notesRouter);
 app.use("/", medicationsRouter);
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
+app.use(function (_req: any, _res: any, next: (arg0: any) => void) {
 	next(createError(404));
 });
 
 // error handler
-app.use(function (err, req, res, next) {
+app.use(function (
+	err: { message: any; status: any },
+	req: { app: { get: (arg0: string) => string } },
+	res: {
+		locals: { message: any; error: any };
+		status: (arg0: any) => void;
+		render: (arg0: string) => void;
+	},
+	_next: any
+) {
 	// set locals, only providing error in development
 	res.locals.message = err.message;
 	res.locals.error = req.app.get("env") === "development" ? err : {};
