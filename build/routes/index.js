@@ -1,6 +1,6 @@
 var router = express.Router();
 /* GET home page. */
-router.get("/", function (req, res) {
+router.get("/", function (_req, res) {
     res.render("index", { title: "Doctor Express" });
 });
 // Google OAuth login route
