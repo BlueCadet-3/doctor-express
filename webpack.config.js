@@ -4,6 +4,10 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = {
 	watch: true,
+	watchOptions: {
+		aggregateTimeout: 5000,
+		ignored: '/node_modules/',
+	},
 	target: 'node',
 	mode: 'development',
 	entry: './src/server.ts',
