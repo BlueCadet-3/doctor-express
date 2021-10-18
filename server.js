@@ -1,28 +1,28 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 
-var session = require("express-session");
-var passport = require("passport");
-var methodOverride = require("method-override");
-var favicon = require("serve-favicon");
+const session = require("express-session");
+const passport = require("passport");
+const methodOverride = require("method-override");
+const favicon = require("serve-favicon");
 
 // Always process the .env file early
 require("dotenv").config();
 // Run the database configuration code
-require("./config/database");
+require("./config/db");
 // Run the passport configuration code
 require("./config/passport");
 
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
-var patientsRouter = require("./routes/patients");
-var notesRouter = require("./routes/notes");
-var medicationsRouter = require("./routes/medications");
+const rootRouter = require("./routes/root");
+const authRouter = require("./routes/auth");
+const patientsRouter = require("./routes/patients");
+const notesRouter = require("./routes/notes");
+const medicationsRouter = require("./routes/medications");
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -35,7 +35,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(methodOverride("_method"));
 app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
-
 app.use(
   session({
     secret: process.env.SECRET,
@@ -53,8 +52,8 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/", rootRouter);
+app.use("/auth", authRouter);
 app.use("/patients", patientsRouter);
 app.use("/", notesRouter);
 app.use("/", medicationsRouter);

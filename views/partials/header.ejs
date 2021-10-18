@@ -16,7 +16,7 @@
     <img src="/images/doctor.png" alt="doctor" id="doctor">
     <h1 id="title">Doctor Express</h1>
     <div id="sign-out">
-      <a href="/logout">
+      <a href="/auth/logout">
         <!-- <img src="/images/sign-out.png" alt="sign-out" id="sign-out"> -->
         <svg id="sign-out" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 511.989 511.989" style="enable-background:new 0 0 511.989 511.989;" xml:space="preserve">
@@ -80,7 +80,7 @@
     <a href="/patients/<%= user._id %>" id="avatar">
     <div id="avatar">
     <img src="<%= user.avatar %>" alt="avatar" id="avatar">
-  </div>  
+  </div>
 </a>
   <% } else { %>
       <img src="/images/doctor.png" alt="doctor">
@@ -91,6 +91,6 @@
     </li>
     <% } %>
   </ul>
-</nav> 
+</nav>
 
   <main>
