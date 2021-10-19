@@ -1,0 +1,52 @@
+<%- include('../partials/header') %>
+
+<script src="/js/onboard.js" async></script>
+
+<div id="new-user">
+	<label for="role-select">How will you be using our platform?</label>
+	<select name="role" id="role-select">
+		<option value="none" selected>--Please choose an option--</option>
+		<option value="doctor">Doctor</option>
+		<option value="patient">Patient</option>
+	</select>
+
+	<form action="/doctors" method="POST" id="new-doctor">
+		<label> First Name </label>
+		<input type="text" name="firstName" />
+		<br />
+		<label> Last Name </label>
+		<input type="text" name="lastName" />
+		<br />
+		<label> Date of Birth </label>
+		<input type="text" name="birthDate" />
+		<br />
+		<label> State </label>
+		<input type="text" name="state" />
+		<br />
+		<button type="submit">Submit</button>
+	</form>
+
+	<form action="/patients" method="POST" id="new-patient">
+		<label> First Name </label>
+		<input type="text" name="firstName" />
+		<br />
+		<label> Last Name </label>
+		<input type="text" name="lastName" />
+		<br />
+		<label> Date of Birth </label>
+		<input type="text" name="birthDate" />
+		<br />
+		<label> Height </label>
+		<input type="text" name="height" />
+		<br />
+		<label> Weight </label>
+		<input type="text" name="weight" />
+		<br />
+		<label> Blood Type </label>
+		<input type="text" name="bloodType" />
+		<br />
+		<button type="submit">Submit</button>
+	</form>
+</div>
+
+<%- include('../partials/footer') %>

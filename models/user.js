@@ -2,13 +2,19 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  name: String,
+  avatar: String,
+  email: String,
   googleId: {
     type: String,
     required: true
   },
-  email: String,
-  avatar: String
+  name: String,
+  onboard: {
+    type: Boolean,
+    required: true,
+    default: false
+  },
+  role: String
 }, {
   timestamps: true
 });

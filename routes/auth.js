@@ -1,27 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const passport = require('passport');
+
+const authCtrl = require('../controllers/auth');
+
+// OAuth sign out route
+router.get('/logout', authCtrl.logOut);
 
 // Google OAuth login route
-router.get('/google', passport.authenticate(
-	'google',
-	{ scope: ['profile', 'email'] }
-));
+router.get('/google', authCtrl.googleLogin);
 
 // Google OAuth callback route
-router.get('/oauth2callback', passport.authenticate(
-	'google',
-	{
-		successRedirect: `/patients/show`,
-		failureRedirect: '/'
-	}
-)
-);
-
-// Google OAuth logout route
-router.get('/logout', function (req, res) {
-	req.logout();
-	res.redirect('/');
-});
+router.get('/oauth2callback', authCtrl.googleCallback);
 
 module.exports = router;

@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
+const userCtrl = require('../controllers/users');
+
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+router.get('/onboard', userCtrl.showOnboard);
+router.post('/onboard', userCtrl.handleOnboard);
 
 module.exports = router;

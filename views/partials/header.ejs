@@ -3,21 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style> .no-js { visibility: visible; } </style>
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-  <script src="/javascripts/edit-comment.js" defer></script>
+  <script src="/js/edit-comment.js" defer></script>
   <title><%= title %></title>
 </head>
-<body>
+<body style="visibility: hidden;" class="no-js">
+<script> document.querySelector('body').classList.remove('no-js'); </script>
 
 <nav id="topnav">
   <% if (user) { %>
-    <img src="/images/doctor.png" alt="doctor" id="doctor">
+    <img src="/img/doctor.png" alt="doctor" id="doctor">
     <h1 id="title">Doctor Express</h1>
     <div id="sign-out">
       <a href="/auth/logout">
-        <!-- <img src="/images/sign-out.png" alt="sign-out" id="sign-out"> -->
+        <!-- <img src="/img/sign-out.png" alt="sign-out" id="sign-out"> -->
         <svg id="sign-out" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 511.989 511.989" style="enable-background:new 0 0 511.989 511.989;" xml:space="preserve">
 <g>
@@ -83,10 +85,10 @@
   </div>
 </a>
   <% } else { %>
-      <img src="/images/doctor.png" alt="doctor">
+      <img src="/img/doctor.png" alt="doctor">
       <h1 id="title">Doctor Express</h1>
       <a href="/auth/google" id="sign-in">
-        <img src="/images/google-sign-in.png" alt="Sign in with Google">
+        <img src="/img/google-sign-in.png" alt="Sign in with Google">
       </a>
     </li>
     <% } %>

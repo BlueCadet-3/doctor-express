@@ -19,12 +19,12 @@
   <% patient.notes.forEach(function(n) { %>
     <div class="note">
       <div class="note-header">
-        <h3 class="note"> <%= n.updatedAt.toLocaleString(); %> </h3> 
+        <h3 class="note"> <%= n.updatedAt.toLocaleString(); %> </h3>
           <% if (user && user._id.equals(n.user)) { %>
             <div class="toolbar">
-              <button class="edit" onclick="editNote('<%= n._id %>')"><img src="/images/edit.png" alt="edit note"></button>
+              <button class="edit" onclick="editNote('<%= n._id %>')"><img src="/img/edit.png" alt="edit note"></button>
               <form action="/notes/<%= n._id %>?_method=DELETE" method="POST" class="delete">
-                <button type="submit" class="delete"><img src="/images/delete.png" alt="delete" class="delete note"></button>
+                <button type="submit" class="delete"><img src="/img/delete.png" alt="delete" class="delete note"></button>
               </form>
             </div>
       </div>
@@ -37,7 +37,7 @@
       </div>
         <p class="note"> <%= n.note %> </p> <br> <br>
     </div>
-    
+
     <% }); %>
   <% } %>
 
@@ -75,7 +75,7 @@
       <% if (user && user._id.equals(m.user)) { %>
         <form action="/medications/<%= m._id %>?_method=DELETE" method="POST" class="delete">
           <button type="submit" class="delete">
-            <img src="/images/delete.png" alt="delete" class="delete">
+            <img src="/img/delete.png" alt="delete" class="delete">
           </button>
         </form>
       </div>
@@ -92,7 +92,7 @@
       <h4 class="medication-key">Notes</h4>
       <p class="medication-value"><%= m.notes %></p>
     </div>
-  </div> 
+  </div>
     <% }); %>
 
 <div class="medication-card">
@@ -116,9 +116,9 @@
       <h4  class="medication-key">Notes</h4>
       <p class="medication-value"><input type="text" name="notes"></p>
   </div>
-  
+
     <button type="submit" id="add-medication">Add Medication</button>
-  
+
   </form>
 
   </div>

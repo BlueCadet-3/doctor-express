@@ -18,9 +18,10 @@ require("./config/passport");
 
 const rootRouter = require("./routes/root");
 const authRouter = require("./routes/auth");
-const patientsRouter = require("./routes/patients");
-const notesRouter = require("./routes/notes");
 const medicationsRouter = require("./routes/medications");
+const notesRouter = require("./routes/notes");
+const patientsRouter = require("./routes/patients");
+const usersRouter = require("./routes/users");
 
 const app = express();
 
@@ -54,9 +55,10 @@ app.use(function (req, res, next) {
 
 app.use("/", rootRouter);
 app.use("/auth", authRouter);
-app.use("/patients", patientsRouter);
-app.use("/", notesRouter);
 app.use("/", medicationsRouter);
+app.use("/", notesRouter);
+app.use("/patients", patientsRouter);
+app.use("/users", usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
