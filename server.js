@@ -18,6 +18,7 @@ require("./config/passport");
 
 const rootRouter = require("./routes/root");
 const authRouter = require("./routes/auth");
+const doctorsRouter = require('./routes/doctors');
 const medicationsRouter = require("./routes/medications");
 const notesRouter = require("./routes/notes");
 const patientsRouter = require("./routes/patients");
@@ -57,7 +58,8 @@ app.use("/", rootRouter);
 app.use("/auth", authRouter);
 app.use("/", medicationsRouter);
 app.use("/", notesRouter);
-app.use("/patients", patientsRouter);
+app.use("/users/patient", patientsRouter);
+app.use("/users/doctor", doctorsRouter);
 app.use("/users", usersRouter);
 
 // catch 404 and forward to error handler
@@ -73,7 +75,7 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render("error");
+  res.render("error/error");
 });
 
 module.exports = app;

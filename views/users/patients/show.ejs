@@ -1,4 +1,4 @@
-<%- include('../partials/header') %>
+<%- include('../../partials/header') %>
 
 <section id="patient-portal">
 
@@ -9,14 +9,14 @@
       <h3 class="note">Add A New Note</h3>
     </div>
 
-    <form action="/patients/<%= patient._id %>/notes" method="POST" id="new-note">
+    <form action="/patients/<%= user._id %>/notes" method="POST" id="new-note">
       <textarea name="note" id="new-note"></textarea> <br>
       <button type="submit" id="new-note">Save</button>
     </form>
   </div>
 
-<% if (patient.notes.length) { %>
-  <% patient.notes.forEach(function(n) { %>
+<% if (user.patient.notes.length) { %>
+  <% user.patient.notes.forEach(function(n) { %>
     <div class="note">
       <div class="note-header">
         <h3 class="note"> <%= n.updatedAt.toLocaleString(); %> </h3>
@@ -47,28 +47,28 @@
   <h3 id="patient-info">Patient Profile</h3>
     <div class="patient-info">
       <h4  class="patient-key">Name</h4>
-      <p class="patient-value"><%= patient.firstName + " " + patient.lastName %></p>
+      <p class="patient-value"><%= user.name.display %></p>
     </div>
     <div class="patient-info">
       <h4  class="patient-key">Birth Date</h4>
-      <p class="patient-value"><%= patient.birthDate.toLocaleString().split(',')[0]; %></p>
+      <p class="patient-value"><%=user.patient.birthDate.toLocaleString().trim(","); %></p>
     </div>
     <div class="patient-info">
       <h4  class="patient-key">Height</h4>
-      <p class="patient-value"><%=patient.height %></p>
+      <p class="patient-value"><%=user.patient.height %></p>
     </div>
     <div class="patient-info">
       <h4  class="patient-key">Weight</h4>
-      <p class="patient-value"><%=patient.weight %></p>
+      <p class="patient-value"><%=user.patient.weight %></p>
     </div>
     <div class="patient-info">
       <h4  class="patient-key">Blood Type</h4>
-      <p class="patient-value"><%=patient.bloodType %></p>
+      <p class="patient-value"><%=user.patient.bloodType %></p>
     </div>
 </div>
 
 <div id="patient-medications">
-<% patient.medications.forEach(function(m) { %>
+<% user.patient.medications.forEach((m) => { %>
   <div class="medication-card">
     <div class="medication-header">
       <h3 class="medication-header"><%= m.name %></h3>
@@ -98,7 +98,7 @@
 <div class="medication-card">
   <div class="medication-header">
     <h3 class="medication-header">Add New Medication</h3>
-    <form action="/patients/<%= patient._id %>/medications" method="POST" id="new-note">
+    <form action="/patients/<%= user._id %>/medications" method="POST" id="new-note">
   </div>
   <div class="medication-info">
       <h4  class="medication-key">Name</h4>
@@ -127,4 +127,4 @@
 
 </section>
 
-<%- include('../partials/footer') %>
+<%- include('../../partials/footer') %>

@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const patientsCtrl = require('../controllers/patients');
+const doctorCtrl = require('../controllers/doctors');
 
-router.get('/:id', patientsCtrl.show);
+router.get('/:id', doctorCtrl.show);
 
 module.exports = router;

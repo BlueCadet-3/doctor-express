@@ -10,13 +10,8 @@
 		<option value="patient">Patient</option>
 	</select>
 
-	<form action="/doctors" method="POST" id="new-doctor">
-		<label> First Name </label>
-		<input type="text" name="firstName" />
-		<br />
-		<label> Last Name </label>
-		<input type="text" name="lastName" />
-		<br />
+	<form action="/users/onboard" method="POST" id="new-doctor">
+		<input type="hidden" name="role" value="doctor" />
 		<label> Date of Birth </label>
 		<input type="text" name="birthDate" />
 		<br />
@@ -26,13 +21,8 @@
 		<button type="submit">Submit</button>
 	</form>
 
-	<form action="/patients" method="POST" id="new-patient">
-		<label> First Name </label>
-		<input type="text" name="firstName" />
-		<br />
-		<label> Last Name </label>
-		<input type="text" name="lastName" />
-		<br />
+	<form action="/users/onboard" method="POST" id="new-patient">
+		<input type="hidden" name="role" value="patient" />
 		<label> Date of Birth </label>
 		<input type="text" name="birthDate" />
 		<br />
