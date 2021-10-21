@@ -19,8 +19,15 @@ const doctorSchema = new Schema({
 }, { _id: false });
 
 const patientSchema = new Schema({
+	user: {
+		type: Schema.Types.ObjectId,
+		ref: 'User'
+	},
 	birthDate: Date,
-	bloodType: String,
+	bloodType: {
+		type: String,
+		enum: ['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-', 'Unknown']
+	},
 	height: Number,
 	medications: [{
 		type: Schema.Types.ObjectId,
@@ -31,12 +38,12 @@ const patientSchema = new Schema({
 		ref: 'Note'
 	}],
 	weight: Number,
-}, { _id: false });
+}, { timestamps: true });
 
 const userSchema = new Schema({
 	auth: authSchema,
 	email: String,
-	name: { nameSchema },
+	name: nameSchema,
 	onboard: {
 		type: Boolean,
 		required: true,
@@ -44,7 +51,7 @@ const userSchema = new Schema({
 	},
 	role: {
 		default: 'none',
-		enum: ['doctor', 'none', 'patient'],
+		enum: ['doctors', 'none', 'patients'],
 		type: String,
 		required: true
 	},

@@ -58,8 +58,8 @@ app.use("/", rootRouter);
 app.use("/auth", authRouter);
 app.use("/", medicationsRouter);
 app.use("/", notesRouter);
-app.use("/users/patient", patientsRouter);
-app.use("/users/doctor", doctorsRouter);
+app.use("/users/patients", patientsRouter);
+app.use("/users/doctors", doctorsRouter);
 app.use("/users", usersRouter);
 
 // catch 404 and forward to error handler

@@ -5,6 +5,20 @@ module.exports = {
 };
 
 async function show (req, res) {
-	const patient = await User.findOne({ _id: req.user._id });
-	res.render('users/patients/show', { title: "Patient Dashboard | Doctor Express", user: patient });
+	const patient = await User
+		.findById(req.user._id)
+		.populate([{
+			path: "patient.medications",
+			model: "Medication"
+		}, {
+			path: "patient.notes",
+			model: "Note"
+		}
+		])
+		.exec();
+	console.log(":::showPatient", patient);
+	res.render('users/patients/show', {
+		title: "Patient Dashboard | Doctor Express",
+		user: patient
+	});
 }

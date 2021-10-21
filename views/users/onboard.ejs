@@ -13,7 +13,7 @@
 	<form action="/users/onboard" method="POST" id="new-doctor">
 		<input type="hidden" name="role" value="doctor" />
 		<label> Date of Birth </label>
-		<input type="text" name="birthDate" />
+		<input type="date" name="birthDate" />
 		<br />
 		<label> State </label>
 		<input type="text" name="state" />
@@ -23,17 +23,27 @@
 
 	<form action="/users/onboard" method="POST" id="new-patient">
 		<input type="hidden" name="role" value="patient" />
-		<label> Date of Birth </label>
-		<input type="text" name="birthDate" />
+		<label for="birthDate"> Date of Birth </label>
+		<input type="date" name="birthDate" />
 		<br />
-		<label> Height </label>
-		<input type="text" name="height" />
+		<label for="height"> Height </label>
+		<input type="number" name="height" />
 		<br />
-		<label> Weight </label>
-		<input type="text" name="weight" />
+		<label for="weight"> Weight </label>
+		<input type="number" name="weight" />
 		<br />
-		<label> Blood Type </label>
-		<input type="text" name="bloodType" />
+		<label for="bloodType"> Blood Type </label>
+		<select name="bloodType">
+			<option value="A+">A+</option>
+			<option value="A-">A-</option>
+			<option value="B+">B+</option>
+			<option value="B-">B-</option>
+			<option value="O+">O+</option>
+			<option value="O-">O-</option>
+			<option value="AB+">AB+</option>
+			<option value="AB-">AB-</option>
+			<option value="Unknown">Unknown</option>
+		</select>
 		<br />
 		<button type="submit">Submit</button>
 	</form>

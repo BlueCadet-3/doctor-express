@@ -9,7 +9,7 @@
       <h3 class="note">Add A New Note</h3>
     </div>
 
-    <form action="/patients/<%= user._id %>/notes" method="POST" id="new-note">
+    <form action="/users/patients/<%= user._id %>/notes" method="POST" id="new-note">
       <textarea name="note" id="new-note"></textarea> <br>
       <button type="submit" id="new-note">Save</button>
     </form>
@@ -19,7 +19,9 @@
   <% user.patient.notes.forEach(function(n) { %>
     <div class="note">
       <div class="note-header">
-        <h3 class="note"> <%= n.updatedAt.toLocaleString(); %> </h3>
+        <h3 class="note">
+          <%= n.updatedAt.toLocaleString(); %>
+        </h3>
           <% if (user && user._id.equals(n.user)) { %>
             <div class="toolbar">
               <button class="edit" onclick="editNote('<%= n._id %>')"><img src="/img/edit.png" alt="edit note"></button>
@@ -51,7 +53,7 @@
     </div>
     <div class="patient-info">
       <h4  class="patient-key">Birth Date</h4>
-      <p class="patient-value"><%=user.patient.birthDate.toLocaleString().trim(","); %></p>
+      <p class="patient-value"><%=user.patient.birthDate.toLocaleString().split(",")[0]; %></p>
     </div>
     <div class="patient-info">
       <h4  class="patient-key">Height</h4>
