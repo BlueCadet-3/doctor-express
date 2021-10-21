@@ -17,7 +17,7 @@ async function create (req, res) {
 	user.patient.notes.push(note);
 	await user.save((err) => {
 		if (err) return res.render('error/error', { error: err });
-		res.redirect(`/users/${req.user.role}/${req.params.id}`);
+		res.redirect('back');
 	});
 }
 
@@ -28,7 +28,7 @@ async function update (req, res) {
 	const note = await Note.findOneAndUpdate(filter, update, options);
 	await note.save((err) => {
 		if (err) return res.render('error/error', { error: err });
-		res.redirect(`/users/${req.user.role}/${req.user._id}`);
+		res.redirect('back');
 	});
 }
 
@@ -36,5 +36,5 @@ async function deleteNote (req, res) {
 	const filter = { _id: req.params.id };
 	const options = {};
 	await Note.findOneAndDelete(filter, options);
-	res.redirect(`/users/${req.user.role}/${req.user._id}`);
+	res.redirect('back');
 }
