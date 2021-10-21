@@ -13,8 +13,9 @@ async function create (req, res) {
 		user: req.params.id
 	};
 	const note = await Note.create(doc);
-	const user = await User.findById(req.params.id);
-	user.patient.notes.push(note);
+	const filter = { _id: req.params.id };
+	const user = await User.findOne(filter);
+	user.patient.notes.unshift(note);
 	await user.save((err) => {
 		if (err) return res.render('error/error', { error: err });
 		res.redirect('back');
