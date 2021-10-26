@@ -4,127 +4,134 @@
 
 <div id="patient-notes">
 
-  <div class="note" id="new-note">
-    <div class="note-header">
-      <h3 class="note">Add A New Note</h3>
-    </div>
+	<div class="note" id="new-note">
+		<div class="note-header">
+			<h3 class="note">Add A New Note</h3>
+		</div>
 
-    <form action="/users/patients/<%= user._id %>/notes" method="POST" id="new-note">
-      <textarea name="note" id="new-note"></textarea> <br>
-      <button type="submit" id="new-note">Save</button>
-    </form>
-  </div>
+		<form action="/users/<%= user.role %>/<%= user._id %>/notes" method="POST" id="new-note">
+			<textarea name="note" placeholder="Type your new note here..." id="new-note"></textarea>
+			<button type="submit" id="new-note">Save</button>
+		</form>
+	</div>
 
 <% if (user.patient.notes.length) { %>
-  <% user.patient.notes.forEach(function(n) { %>
-    <div class="note">
-      <div class="note-header">
-        <h3 class="note">
-          <%= n.updatedAt.toLocaleString(); %>
-        </h3>
-          <% if (user && user._id.equals(n.user)) { %>
-            <div class="toolbar">
-              <button class="edit" onclick="editNote('<%= n._id %>')"><img src="/img/edit.png" alt="edit note"></button>
-              <form action="/notes/<%= n._id %>?_method=DELETE" method="POST" class="delete">
-                <button type="submit" class="delete"><img src="/img/delete.png" alt="delete" class="delete note"></button>
-              </form>
-            </div>
-      </div>
+	<% user.patient.notes.forEach(function(n) { %>
+		<div class="note">
+			<div class="note-header">
+				<h3 class="note">
+					<%= n.updatedAt.toLocaleString(); %>
+				</h3>
+					<% if (user && user._id.equals(n.user)) { %>
+						<div class="toolbar">
+							<div class="edit" onclick="editNote('<%= n._id %>')">
+								<img src="/img/svg/edit.svg" alt="edit note">
+							</div>
+							<form action="/notes/<%= n._id %>?_method=DELETE" method="POST" name="deleteNote">
+								<div type="submit" class="delete" onclick="document.forms['deleteNote'].submit();">
+									<img src="/img/svg/delete.svg" alt="delete">
+								</div>
+							</form>
+						</div>
+			</div>
 <% } %> <br>
-      <div class="edit-note" id="<%= n._id %>" style="display: none">
-        <form action="/notes/<%= n._id %>?_method=PUT" method="POST">
-          <textarea class ="edit-note" name="text"><%= n.note %></textarea><br>
-          <button type="submit">Edit Note</button>
-        </form>
-      </div>
-        <p class="note"> <%= n.note %> </p> <br> <br>
-    </div>
+			<div class="edit-note" id="<%= n._id %>" style="display: none">
+				<form action="/notes/<%= n._id %>?_method=PUT" method="POST">
+					<textarea class ="edit-note" name="text">
+						<%= n.note %>
+					</textarea>
+					<button type="submit">Edit Note</button>
+				</form>
+			</div>
+				<span class="note"> <%= n.note %> </span> <br> <br>
+		</div>
 
-    <% }); %>
-  <% } %>
+		<% }); %>
+	<% } %>
 
 </div>
 
-<div id="patient-profile">
-  <h3 id="patient-info">Patient Profile</h3>
-    <div class="patient-info">
-      <h4  class="patient-key">Name</h4>
-      <p class="patient-value"><%= user.name.display %></p>
-    </div>
-    <div class="patient-info">
-      <h4  class="patient-key">Birth Date</h4>
-      <p class="patient-value"><%=user.patient.birthDate.toLocaleString().split(",")[0]; %></p>
-    </div>
-    <div class="patient-info">
-      <h4  class="patient-key">Height</h4>
-      <p class="patient-value"><%=user.patient.height %></p>
-    </div>
-    <div class="patient-info">
-      <h4  class="patient-key">Weight</h4>
-      <p class="patient-value"><%=user.patient.weight %></p>
-    </div>
-    <div class="patient-info">
-      <h4  class="patient-key">Blood Type</h4>
-      <p class="patient-value"><%=user.patient.bloodType %></p>
-    </div>
+<div id="patient-info-container">
+	<div id="patient-profile">
+		<h3 id="patient-info">Patient Profile</h3>
+		<div class="patient-info">
+			<span class="patient-key">Name</span>
+			<span class="patient-value"><%= user.name.display %></span>
+		</div>
+		<div class="patient-info">
+			<span class="patient-key">Birth Date</span>
+			<span class="patient-value"><%=user.patient.birthDate.toLocaleString().split(",")[0]; %></span>
+		</div>
+		<div class="patient-info">
+			<span class="patient-key">Height</span>
+			<span class="patient-value"><%=user.patient.height %></span>
+		</div>
+		<div class="patient-info">
+			<span class="patient-key">Weight</span>
+			<span class="patient-value"><%=user.patient.weight %></span>
+		</div>
+		<div class="patient-info">
+			<span class="patient-key">Blood Type</span>
+			<span class="patient-value"><%=user.patient.bloodType %></span>
+		</div>
+	</div>
+
+	<div id="patient-medications">
+		<% user.patient.medications.forEach((m) => { %>
+			<div class="medication-card">
+				<div class="medication-header">
+					<h3 class="medication-header"><%= m.name %></h3>
+					<% if (user && user._id.equals(m.user)) { %>
+						<form action="/medications/<%= m._id %>?_method=DELETE" method="POST" class="delete">
+							<button type="submit" class="delete">
+								<img src="/img/delete.png" alt="delete" class="delete">
+							</button>
+						</form>
+						<% } %>
+					</div>
+					<div class="medication-info">
+						<span class="medication-key">Dosage</span>
+						<span class="medication-value"><%= m.dosage %></span>
+					</div>
+					<div class="medication-info">
+						<span class="medication-key">Frequency</span>
+						<span class="medication-value"><%= m.frequency %></span>
+					</div>
+					<div class="medication-info">
+						<span class="medication-key">Notes</span>
+						<span class="medication-value"><%= m.notes %></span>
+					</div>
+				</div>
+				<% }); %>
+
+				<div class="medication-header">
+					<h3 class="medication-header">Add New Medication</h3>
+					<form action="/patients/<%= user._id %>/medications" method="POST" id="new-note">
+					</div>
+		<div class="medication-info">
+			<span class="medication-key">Name</span>
+			<span class="medication-value"><input type="text" name="name"></span>
+		</div>
+		<div class="medication-info">
+			<span class="medication-key">Dosage</span>
+			<span class="medication-value"><input type="text" name="dosage"></span>
+		</div>
+		<div class="medication-info">
+			<span class="medication-key">Frequency</span>
+			<span class="medication-value"><input type="text" name="frequency"></span>
+		</div>
+		<div class="medication-info">
+			<span class="medication-key">Notes</span>
+			<span class="medication-value"><input type="text" name="notes"></span>
+		</div>
+
+		<button type="submit" id="add-medication">Add Medication</button>
+
+	</form>
+
 </div>
 
-<div id="patient-medications">
-<% user.patient.medications.forEach((m) => { %>
-  <div class="medication-card">
-    <div class="medication-header">
-      <h3 class="medication-header"><%= m.name %></h3>
-      <% if (user && user._id.equals(m.user)) { %>
-        <form action="/medications/<%= m._id %>?_method=DELETE" method="POST" class="delete">
-          <button type="submit" class="delete">
-            <img src="/img/delete.png" alt="delete" class="delete">
-          </button>
-        </form>
-      </div>
-      <% } %>
-    <div class="medication-info">
-      <h4  class="medication-key">Dosage</h4>
-      <p class="medication-value"><%= m.dosage %></p>
-    </div>
-    <div class="medication-info">
-      <h4 class="medication-key">Frequency</h4>
-      <p class="medication-value"><%= m.frequency %></p>
-    </div>
-    <div class="medication-info">
-      <h4 class="medication-key">Notes</h4>
-      <p class="medication-value"><%= m.notes %></p>
-    </div>
-  </div>
-    <% }); %>
-
-<div class="medication-card">
-  <div class="medication-header">
-    <h3 class="medication-header">Add New Medication</h3>
-    <form action="/patients/<%= user._id %>/medications" method="POST" id="new-note">
-  </div>
-  <div class="medication-info">
-      <h4  class="medication-key">Name</h4>
-      <p class="medication-value"><input type="text" name="name"></p>
-  </div>
-  <div class="medication-info">
-      <h4  class="medication-key">Dosage</h4>
-      <p class="medication-value"><input type="text" name="dosage"></p>
-  </div>
-  <div class="medication-info">
-      <h4  class="medication-key">Frequency</h4>
-      <p class="medication-value"><input type="text" name="frequency"></p>
-  </div>
-  <div class="medication-info">
-      <h4  class="medication-key">Notes</h4>
-      <p class="medication-value"><input type="text" name="notes"></p>
-  </div>
-
-    <button type="submit" id="add-medication">Add Medication</button>
-
-  </form>
-
-  </div>
-
+</div>
 </div>
 
 </section>

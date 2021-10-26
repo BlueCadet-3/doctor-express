@@ -11,9 +11,9 @@ async function create (req, res) {
   const medication = await Medication.create(req.body);
   medication.user = req.user._id;
   console.log(":::medication", medication);
-  user.medications.push(medication._id);
+  user.patient.medications.unshift(medication._id);
   user.save().then(function () {
-    res.redirect(`/patients/${user._id}`);
+    res.redirect(`/users/${user.role}/${user._id}`);
   });
 }
 

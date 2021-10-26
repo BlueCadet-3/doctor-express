@@ -3,11 +3,11 @@
 <script src="/js/onboard.js" async></script>
 
 <div id="new-user">
-	<label for="role-select">How will you be using our platform?</label>
+	<h2>How will you be using our platform?</h2>
 	<select name="role" id="role-select">
 		<option value="none" selected>--Please choose an option--</option>
 		<option value="doctor">Doctor</option>
-		<option value="patient">Patient</option>
+		<option value="patient" autofocus>Patient</option>
 	</select>
 
 	<form action="/users/onboard" method="POST" id="new-doctor">
@@ -24,16 +24,22 @@
 	<form action="/users/onboard" method="POST" id="new-patient">
 		<input type="hidden" name="role" value="patient" />
 		<label for="birthDate"> Date of Birth </label>
-		<input type="datetime-local" name="birthDate" />
+		<input
+			type="datetime-local"
+			name="birthDate"
+			id="birthDate"
+			min="1900-01-01T00:00"
+			value="1980-01-01T00:00"
+		/>
 		<br />
 		<label for="height"> Height </label>
-		<input type="number" name="height" />
+		<input type="number" name="height" id="height" />
 		<br />
 		<label for="weight"> Weight </label>
-		<input type="number" name="weight" />
+		<input type="number" name="weight" id="weight" />
 		<br />
 		<label for="bloodType"> Blood Type </label>
-		<select name="bloodType">
+		<select name="bloodType" id="bloodType">
 			<option value="A+">A+</option>
 			<option value="A-">A-</option>
 			<option value="B+">B+</option>
