@@ -29,9 +29,9 @@
 	--s5: calc(var(--s4) * var(--ratio));
 	/* Colors */
 	/* Layout */
-	--header-height: 100px;
+	--header-height: 96px;
 	--footer-height: 80px;
-	--body-height: calc(100vh - (var(--header-height) + var(--footer-height)));
+	--body-height: calc(100vh - var(--header-height) - var(--footer-height));
 }
 
 * {
@@ -45,6 +45,10 @@
 	outline: none;
 	user-select: none;
 	user-zoom: none;
+}
+
+body {
+	width: 100%;
 }
 
 /* Hide artifacts from using flex on * selector */
@@ -74,6 +78,7 @@ nav#topnav {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	text-align: center;
 }
 
 div#sign-out {
@@ -127,38 +132,65 @@ h6 {
 }
 
 p {
-	background-color: azure;
+	background-color: hsl(201, 92%, 98%);
 	text-indent: var(--s3);
-	max-width: 66ch;
+	max-width: 60ch;
 	padding: var(--s1);
 	border-radius: var(--s-5);
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 main {
+	width: 100%;
 	margin-top: var(--header-height);
 }
 
 footer {
 	position: relative;
 	bottom: 0;
-	background-color: aquamarine;
 	width: 100%;
 	height: var(--footer-height);
+	place-content: center;
+	background-color: transparent;
+	backdrop-filter: blur(7px);
+	box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
 }
 
 footer > a > img {
-	min-width: 80px;
+	min-width: 60px;
 	height: auto;
 }
 
 h2.subheader {
-	background-color: darkred;
-	min-width: 99%;
+	background-color: hsl(201, 92%, 86%);
+	min-width: 600px;
+	max-width: 50vw;
+	text-align: center;
 	padding: var(--s3);
 	margin: var(--s2) 0;
 	border-radius: var(--s-5);
 	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+/* Header */
+
+img#doctor {
+	width: fit-content;
+}
+
+img#google-sign-in {
+	width: fit-content;
+}
+
+/* Footer */
+img#github {
+	max-width: 60px;
+}
+
+/* Index page */
+
+div#index {
+	width: 100%;
 }
 
 /* Onboarding */
@@ -257,6 +289,7 @@ div.note-header {
 	flex-direction: row;
 	gap: var(--s0);
 	padding: var(--s0);
+	margin-top: var(--s0);
 	border-radius: var(--s-5);
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
@@ -300,8 +333,10 @@ button#new-note {
 
 span.note {
 	background-color: antiquewhite;
-	min-width: 40ch;
-	max-width: 66ch;
+	max-width: 55ch;
+	padding: var(--s0);
+	margin: 0 var(--s0);
+	border-radius: var(--s-5);
 }
 
 /* Patient info display */
@@ -371,5 +406,7 @@ span.medication-value {
 
 div#patient-info-container {
 	grid-area: info;
+	max-width: 320px;
 	max-height: var(--body-height);
+	margin: 0 auto;
 }
