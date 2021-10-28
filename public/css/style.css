@@ -28,10 +28,17 @@
 	--s4: calc(var(--s3) * var(--ratio));
 	--s5: calc(var(--s4) * var(--ratio));
 	/* Colors */
+	--bgc-01: hsla(30, 24%, 93%, 1);
+	--bgc-02: hsla(36, 5%, 62%, 1);
+	--bgc-03: hsla(0, 4%, 58%, 1);
+	--bgc-04: hsla(202, 91%, 87%, 1);
+	--bgc-05: hsla(214, 29%, 42%, 1);
 	/* Layout */
 	--header-height: 96px;
 	--footer-height: 80px;
 	--body-height: calc(100vh - var(--header-height) - var(--footer-height));
+	/* Scroll behavior */
+	scroll-behavior: smooth;
 }
 
 * {
@@ -47,14 +54,15 @@
 	user-zoom: none;
 }
 
-body {
-	width: 100%;
-}
-
 /* Hide artifacts from using flex on * selector */
 head,
 script {
 	display: none;
+}
+
+body {
+	width: 100%;
+	background-color: var(--bgc-01);
 }
 
 html {
@@ -66,9 +74,8 @@ html {
 header {
 	position: fixed;
 	top: 0;
-	width: 100vw;
+	width: 100%;
 	height: var(--header-height);
-	background-color: transparent;
 	backdrop-filter: blur(8px);
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
@@ -97,8 +104,9 @@ h6 {
 
 h1 {
 	font-size: var(--s5);
-	font-weight: 300;
+	font-weight: 600;
 	line-height: 1.167;
+	color: var(--bgc-05);
 }
 
 h2 {
@@ -162,10 +170,11 @@ footer > a > img {
 }
 
 h2.subheader {
-	background-color: hsl(201, 92%, 86%);
+	background-color: var(--bgc-05);
 	min-width: 600px;
 	max-width: 50vw;
 	text-align: center;
+	color: var(--bgc-01);
 	padding: var(--s3);
 	margin: var(--s2) 0;
 	border-radius: var(--s-5);
@@ -180,6 +189,7 @@ img#doctor {
 
 img#google-sign-in {
 	width: fit-content;
+	margin-right: var(--s0);
 }
 
 /* Footer */
@@ -284,7 +294,8 @@ div#patient-notes {
 }
 
 div.note-header {
-	background-color: hsl(201, 92%, 86%);
+	background-color: var(--bgc-05);
+	color: var(--bgc-01);
 	display: flex;
 	flex-direction: row;
 	gap: var(--s0);
@@ -317,26 +328,35 @@ textarea#new-note {
 	width: 90%;
 	max-width: 66ch;
 	min-height: 120px;
+	font-size: large;
 	resize: none;
 	padding: var(--s0);
 	border: 1px solid #000;
 	border-radius: var(--s-5);
 	margin: var(--s0);
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 button#new-note {
+	background-color: var(--bgc-04);
 	font-family: var(--font-headers);
 	font-size: large;
 	padding: var(--s0);
 	border-radius: var(--s-5);
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+button:hover {
+	cursor: pointer;
 }
 
 span.note {
-	background-color: antiquewhite;
+	background-color: whitesmoke;
 	max-width: 55ch;
 	padding: var(--s0);
 	margin: 0 var(--s0);
 	border-radius: var(--s-5);
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 /* Patient info display */
@@ -344,23 +364,32 @@ span.note {
 div#patient-profile {
 	width: 100%;
 	grid-area: profile;
+	border: 1px solid var(--bgc-05);
 }
 
 div.patient-info {
+	width: 100%;
 	display: flex;
 	flex-direction: row;
-	width: 100%;
 	padding: var(--s-5);
+	border-bottom: 1px dotted var(--bgc-04);
+}
+
+div.patient-info:last-of-type {
+	border-bottom: none;
 }
 
 h3#patient-info {
 	width: inherit;
+	background-color: var(--bgc-05);
+	color: var(--bgc-01);
 	align-items: center;
-	background-color: hsl(201, 92%, 86%);
+	padding: var(--s-5);
 }
 
 span.patient-key {
 	font-family: var(--font-headers);
+	color: var(--bgc-05);
 }
 
 span.patient-value {
@@ -377,31 +406,63 @@ div#patient-medications {
 
 div.medication-card {
 	width: 100%;
+	border: 1px solid var(--bgc-05);
+	border-bottom: none;
+}
+
+div.medication-card:last-of-type {
+	border-bottom: 1px solid var(--bgc-05);
 }
 
 div.medication-header {
 	width: 100%;
-	background-color: hsl(201, 92%, 86%);
+	background-color: var(--bgc-05);
+	border: 1px solid var(--bgc-05);
+	padding: var(--s-5);
 }
 
 h3.medication-header {
+	color: var(--bgc-01);
 }
 
 div.medication-info {
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
 	width: 100%;
 	padding: var(--s-5);
-	border: 1px solid hsl(201, 92%, 62%);
+	border-bottom: 1px dotted var(--bgc-04);
+}
+
+div.medication-info:last-of-type {
+	border-bottom: none;
 }
 
 span.medication-key {
-	justify-self: flex-start;
 	font-family: var(--font-headers);
+	color: var(--bgc-05);
 }
 
 span.medication-value {
-	margin-left: auto;
+	text-align: right;
+	margin-left: var(--s-3);
+}
+
+div.medication-info > span > input {
+	padding: var(--s-3);
+	border-radius: var(--s-5);
+	font-family: inherit;
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+button#add-medication {
+	background-color: var(--bgc-04);
+	font-family: var(--font-headers);
+	font-size: large;
+	padding: var(--s0);
+	border-radius: var(--s-5);
+	margin: var(--s-3) 0;
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 div#patient-info-container {
