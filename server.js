@@ -25,6 +25,7 @@ const patientsRouter = require("./routes/patients");
 const usersRouter = require("./routes/users");
 
 const app = express();
+app.set('trust proxy', true);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -42,6 +43,10 @@ app.use(
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
+    maxAge: 1000 * 60 * 15,
+    cookie: {
+      secure: true
+    }
   })
 );
 
