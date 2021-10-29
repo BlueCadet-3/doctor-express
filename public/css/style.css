@@ -41,6 +41,25 @@
 	scroll-behavior: smooth;
 }
 
+@media screen and (max-width: 600px) {
+	section#patient-portal {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"info"
+			"notes";
+	}
+}
+
+::selection {
+	background-color: var(--bgc-04);
+}
+
+::-webkit-scrollbar {
+	width: 0; /* Remove scrollbar space */
+	background: transparent; /* Optional: just make scrollbar invisible */
+}
+
 * {
 	display: flex;
 	flex-direction: column;
@@ -164,9 +183,16 @@ footer {
 	box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
 }
 
-footer > a > img {
-	min-width: 60px;
+svg {
+	max-width: 64px;
 	height: auto;
+	fill: var(--bgc-04);
+	/* stroke: var(--bgc-04); */
+}
+
+svg:hover {
+	filter: grayscale(60%);
+	cursor: pointer;
 }
 
 h2.subheader {
@@ -193,8 +219,10 @@ img#google-sign-in {
 }
 
 /* Footer */
-img#github {
-	max-width: 60px;
+
+svg#github {
+	min-width: 60px;
+	height: auto;
 }
 
 /* Index page */
@@ -254,9 +282,11 @@ div#new-user > form > button {
 	margin: 0 auto;
 }
 
-img#sign-out {
-	width: 40px;
+svg#sign-out {
+	width: 48px;
 	height: auto;
+	fill: var(--bgc-04);
+	stroke: var(--bgc-05);
 }
 
 img#avatar {
@@ -278,42 +308,13 @@ section#patient-portal {
 		"notes notes info";
 }
 
-::-webkit-scrollbar {
-	width: 0; /* Remove scrollbar space */
-	background: transparent; /* Optional: just make scrollbar invisible */
-}
-
 /* Patient notes */
 
 div#patient-notes {
 	all: unset;
 	max-height: var(--body-height);
 	grid-area: notes;
-	border-right: 1px dotted hsl(201, 92%, 86%);
 	overflow-y: scroll;
-}
-
-div.note-header {
-	background-color: var(--bgc-05);
-	color: var(--bgc-01);
-	display: flex;
-	flex-direction: row;
-	gap: var(--s0);
-	padding: var(--s0);
-	margin-top: var(--s0);
-	border-radius: var(--s-5);
-	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
-
-div.toolbar {
-	display: inherit;
-	flex-direction: inherit;
-}
-
-div.toolbar > form > div > img,
-div.toolbar > div > img {
-	max-height: 36px;
-	width: auto;
 }
 
 div#new-note {
@@ -321,7 +322,7 @@ div#new-note {
 }
 
 form#new-note {
-	width: 100%;
+	width: inherit;
 }
 
 textarea#new-note {
@@ -331,10 +332,14 @@ textarea#new-note {
 	font-size: large;
 	resize: none;
 	padding: var(--s0);
-	border: 1px solid #000;
+	border: 1px solid var(--bgc-04);
 	border-radius: var(--s-5);
 	margin: var(--s0);
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+textarea#new-note:focus {
+	border: 1px dotted var(--bgc-05);
 }
 
 button#new-note {
@@ -342,12 +347,33 @@ button#new-note {
 	font-family: var(--font-headers);
 	font-size: large;
 	padding: var(--s0);
+	border: 1px solid var(--bgc-05);
 	border-radius: var(--s-5);
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-button:hover {
-	cursor: pointer;
+div.note-header {
+	background-color: var(--bgc-05);
+	color: var(--bgc-01);
+	display: flex;
+	flex-direction: row;
+	gap: var(--s0);
+	padding: var(--s0);
+	margin: var(--s0) var(--s-4) 0;
+	border-radius: var(--s-5);
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+div.toolbar {
+	display: inherit;
+	flex-direction: inherit;
+	margin-left: var(--s-5);
+}
+
+div.delete > svg,
+div.edit > svg {
+	width: clamp(36px, 40px, 48px);
+	height: auto;
 }
 
 span.note {
@@ -355,8 +381,13 @@ span.note {
 	max-width: 55ch;
 	padding: var(--s0);
 	margin: 0 var(--s0);
+	border: 1px solid var(--bgc-04);
 	border-radius: var(--s-5);
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+button:hover {
+	cursor: pointer;
 }
 
 /* Patient info display */
@@ -410,10 +441,6 @@ div.medication-card {
 	border-bottom: none;
 }
 
-div.medication-card:last-of-type {
-	border-bottom: 1px solid var(--bgc-05);
-}
-
 div.medication-header {
 	width: 100%;
 	background-color: var(--bgc-05);
@@ -450,9 +477,14 @@ span.medication-value {
 
 div.medication-info > span > input {
 	padding: var(--s-3);
-	border-radius: var(--s-5);
 	font-family: inherit;
+	border: 1px solid var(--bgc-04);
+	border-radius: var(--s-5);
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+div.medication-info > span > input:focus {
+	border: 1px dotted var(--bgc-05);
 }
 
 button#add-medication {
@@ -460,6 +492,7 @@ button#add-medication {
 	font-family: var(--font-headers);
 	font-size: large;
 	padding: var(--s0);
+	border: 1px solid var(--bgc-05);
 	border-radius: var(--s-5);
 	margin: var(--s-3) 0;
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
