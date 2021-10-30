@@ -275,7 +275,7 @@ div#new-user > h2 {
 /* ---------- */
 
 div#new-user > form {
-	width: 100%;
+	width: min(340px, calc(70% + 100px));
 	margin-bottom: 100px;
 }
 
@@ -305,7 +305,7 @@ option {
 div#new-user > form > input {
 	background-color: whitesmoke;
 	flex-direction: row;
-	width: clamp(200px, 400px, 600px);
+	width: clamp(70%, 80%, 80%);
 	text-align: center;
 	font-family: inherit;
 	font-size: larger;
@@ -543,6 +543,14 @@ div#patient-info-container {
 	}
 	img#google-sign-in {
 		width: 120px;
+		height: auto;
+	}
+	svg#sign-out {
+		width: 36px;
+		height: auto;
+	}
+	img#avatar {
+		width: 72px;
 		height: auto;
 	}
 	div#patient-info-container {
