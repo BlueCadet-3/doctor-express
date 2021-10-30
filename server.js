@@ -4,6 +4,8 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
+const compression = require('compression');
+const helmet = require('helmet');
 const session = require("cookie-session");
 const passport = require("passport");
 const methodOverride = require("method-override");
@@ -31,6 +33,8 @@ app.set('trust proxy', true);
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+app.use(compression({ filter: shouldCompress }));
+app.use(helmet({ contentSecurityPolicy: false }));
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -82,5 +86,16 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error/error");
 });
+
+// should compress filter
+function shouldCompress (req, res) {
+  if (req.headers['x-no-compression']) {
+    // don't compress responses with this request header
+    return false;
+  }
+
+  // fallback to standard filter function
+  return compression.filter(req, res);
+}
 
 module.exports = app;
