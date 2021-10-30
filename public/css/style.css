@@ -157,6 +157,7 @@ main {
 	max-height: var(--body-height);
 	overflow-y: scroll;
 	margin-top: var(--header-height);
+	margin-bottom: var(--footer-height);
 }
 
 p {
@@ -531,6 +532,19 @@ div#patient-info-container {
 }
 
 @media screen and (max-width: 600px) {
+	:root {
+		--ratio: 1.1;
+		--header-height: 64px;
+		--footer-height: 64px;
+	}
+	img#doctor{
+		width: 60px;
+		height: auto;
+	}
+	img#google-sign-in {
+		width: 120px;
+		height: auto;
+	}
 	div#patient-info-container {
 		max-height: initial;
 	}
