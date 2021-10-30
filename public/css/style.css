@@ -1,3 +1,7 @@
+/* ------------ */
+/* Font Imports */
+/* ------------ */
+
 @font-face {
 	font-family: "Sansita Swashed";
 	src: url("./fonts/SansitaSwashed.ttf");
@@ -9,6 +13,10 @@
 	src: url("./fonts/RobotoMono.ttf");
 	font-display: swap;
 }
+
+/* ----------------- */
+/* Custom Properties */
+/* ----------------- */
 
 :root {
 	/* Font declarations */
@@ -33,6 +41,10 @@
 	--bgc-03: hsla(0, 4%, 58%, 1);
 	--bgc-04: hsla(202, 91%, 87%, 1);
 	--bgc-05: hsla(214, 29%, 42%, 1);
+	/* Shadows */
+	--shadow-01: ;/* header */
+	--shadow-02: ;/* footer */
+	---shadow-03: box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; /* button */
 	/* Layout */
 	--header-height: 96px;
 	--footer-height: 80px;
@@ -41,23 +53,17 @@
 	scroll-behavior: smooth;
 }
 
-@media screen and (max-width: 600px) {
-	section#patient-portal {
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-template-areas:
-			"info"
-			"notes";
-	}
-}
+/* ----------------------- */
+/* Universal Element Rules */
+/* ----------------------- */
 
 ::selection {
 	background-color: var(--bgc-04);
 }
 
 ::-webkit-scrollbar {
-	width: 0; /* Remove scrollbar space */
-	background: transparent; /* Optional: just make scrollbar invisible */
+	width: 0;
+	background: transparent;
 }
 
 * {
@@ -81,7 +87,7 @@ script {
 
 body {
 	width: 100%;
-	background-color: var(--bgc-01);
+	background-color: var(--bgc-03);
 }
 
 html {
@@ -90,26 +96,14 @@ html {
 	line-height: 1.5;
 }
 
-header {
-	position: fixed;
-	top: 0;
-	width: 100%;
-	height: var(--header-height);
-	backdrop-filter: blur(8px);
-	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-}
-
-nav#topnav {
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	text-align: center;
-}
-
-div#sign-out {
-	display: flex;
-	flex-direction: row;
+button {
+	background-color: var(--bgc-04);
+	font-family: var(--font-headers);
+	font-size: larger;
+	padding: var(--s-1);
+	border: 1px solid var(--bgc-05);
+	border-radius: var(--s-5);
+	box-shadow: var(---shadow-03);
 }
 
 h1,
@@ -122,7 +116,7 @@ h6 {
 }
 
 h1 {
-	font-size: var(--s5);
+	font-size: clamp(var(--s4), var(--s5), var(--s5));
 	font-weight: 600;
 	line-height: 1.167;
 	color: var(--bgc-05);
@@ -158,69 +152,99 @@ h6 {
 	line-height: 1.6;
 }
 
+main {
+	width: 100%;
+	max-height: var(--body-height);
+	overflow-y: scroll;
+	margin-top: var(--header-height);
+}
+
 p {
 	background-color: hsl(201, 92%, 98%);
 	text-indent: var(--s3);
 	max-width: 60ch;
 	padding: var(--s1);
 	border-radius: var(--s-5);
+	margin: var(--s-5);
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-main {
-	width: 100%;
-	margin-top: var(--header-height);
-}
-
-footer {
-	position: relative;
-	bottom: 0;
-	width: 100%;
-	height: var(--footer-height);
-	place-content: center;
-	background-color: transparent;
-	backdrop-filter: blur(7px);
-	box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
-}
-
 svg {
-	max-width: 64px;
+	max-width: 48px;
 	height: auto;
 	fill: var(--bgc-04);
-	/* stroke: var(--bgc-04); */
 }
 
+button:hover,
 svg:hover {
 	filter: grayscale(60%);
 	cursor: pointer;
 }
 
-h2.subheader {
-	background-color: var(--bgc-05);
-	min-width: 600px;
-	max-width: 50vw;
-	text-align: center;
-	color: var(--bgc-01);
-	padding: var(--s3);
-	margin: var(--s2) 0;
-	border-radius: var(--s-5);
-	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+/* ------ */
+/* Header */
+/* ------ */
+
+header {
+	background-color: var(--bgc-01);
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: var(--header-height);
+	backdrop-filter: blur(8px);
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
-/* Header */
+nav#topnav {
+	width: 100%;
+	height: var(--header-height);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	text-align: center;
+}
 
 img#doctor {
-	width: fit-content;
+	width: clamp(48px, 96px, 96px);
 }
 
 img#google-sign-in {
-	width: fit-content;
+	width: clamp(100px, 191px, 191px);
 	margin-right: var(--s0);
+}
+
+div#sign-out {
+	display: inherit;
+	flex-direction: inherit;
+}
+
+svg#sign-out {
+	width: clamp(36px, 48px, 48px);
+	fill: var(--bgc-04);
+	stroke: var(--bgc-05);
+}
+
+img#avatar {
+	max-width: clamp(48px, 96px, 96px);
+	height: auto;
+	padding: var(--s-3);
+	border-radius: 50%;
 }
 
 /* Footer */
 
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: var(--footer-height);
+	place-content: center;
+	background-color: var(--bgc-01);
+	box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+}
+
 svg#github {
+	fill: var(--bgc-05);
 	min-width: 60px;
 	height: auto;
 }
@@ -229,22 +253,25 @@ svg#github {
 
 div#index {
 	width: 100%;
+	max-height: var(--body-height);
+	overflow-y: scroll;
 }
 
+h2.subheader,
+div#new-user > h2 {
+	background-color: var(--bgc-05);
+	width: clamp(320px, 90%, 900px);
+	text-align: center;
+	color: var(--bgc-01);
+	padding: var(--s3);
+	margin: var(--s2) 0;
+	border-radius: var(--s-5);
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+/* ---------- */
 /* Onboarding */
-select {
-	width: 90%;
-	place-items: center;
-	font-family: inherit;
-	font-size: large;
-	outline: 1px dotted #000;
-	padding: var(--s-3);
-	margin: var(--s5) auto;
-}
-
-option {
-	padding: var(--s-3);
-}
+/* ---------- */
 
 div#new-user > form {
 	width: 100%;
@@ -252,48 +279,47 @@ div#new-user > form {
 }
 
 div#new-user > form > label {
+	color: var(--bgc-05);
 	place-items: center;
 	font-family: var(--font-headers);
 	font-size: var(--s3);
-	margin: var(--s0) 0;
+	margin: 8px 0;
+}
+
+select {
+	width: 90%;
+	place-items: center;
+	font-family: inherit;
+	font-size: large;
+	outline: 1px dotted var(--bgc-05);
+	padding: var(--s-3);
+	border-radius: var(--s-5);
+	margin: var(--s5) auto;
+}
+
+option {
+	padding: var(--s-3);
 }
 
 div#new-user > form > input {
+	background-color: whitesmoke;
 	flex-direction: row;
-	width: 90%;
+	width: clamp(200px, 400px, 600px);
 	text-align: center;
 	font-family: inherit;
 	font-size: larger;
 	padding: var(--s-4);
 	margin: var(--s0) auto;
-	border-bottom: 2px solid #000;
+	border-radius: var(--s-5);
+	border-bottom: 2px solid var(--bgc-05);
 }
 
 div#new-user > form > input:focus {
-	border-bottom: 2px dotted #000;
+	border-bottom: 2px dotted var(--bgc-04);
 }
 
 div#new-user > form > button {
-	font-family: var(--font-headers);
-	font-size: larger;
-	padding: var(--s-1);
-	border: 1px solid #000;
-	border-radius: var(--s-5);
 	margin: 0 auto;
-}
-
-svg#sign-out {
-	width: 48px;
-	height: auto;
-	fill: var(--bgc-04);
-	stroke: var(--bgc-05);
-}
-
-img#avatar {
-	max-width: 96px;
-	height: auto;
-	padding: var(--s-3);
-	border-radius: 50%;
 }
 
 /* Patient portal */
@@ -308,6 +334,16 @@ section#patient-portal {
 		"notes notes info";
 }
 
+@media screen and (max-width: 600px) {
+	section#patient-portal {
+		display: flex;
+		flex-direction: column;
+		gap: var(--s0);
+		max-height: var(--body-height);
+		overflow-y: scroll;
+	}
+}
+
 /* Patient notes */
 
 div#patient-notes {
@@ -315,6 +351,13 @@ div#patient-notes {
 	max-height: var(--body-height);
 	grid-area: notes;
 	overflow-y: scroll;
+}
+
+@media screen and (max-width: 600px) {
+	div#patient-notes {
+		min-height: 300px;
+		max-height: unset;
+	}
 }
 
 div#new-note {
@@ -340,16 +383,6 @@ textarea#new-note {
 
 textarea#new-note:focus {
 	border: 1px dotted var(--bgc-05);
-}
-
-button#new-note {
-	background-color: var(--bgc-04);
-	font-family: var(--font-headers);
-	font-size: large;
-	padding: var(--s0);
-	border: 1px solid var(--bgc-05);
-	border-radius: var(--s-5);
-	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 div.note-header {
@@ -386,10 +419,6 @@ span.note {
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-button:hover {
-	cursor: pointer;
-}
-
 /* Patient info display */
 
 div#patient-profile {
@@ -402,6 +431,7 @@ div.patient-info {
 	width: 100%;
 	display: flex;
 	flex-direction: row;
+	background-color: whitesmoke;
 	padding: var(--s-5);
 	border-bottom: 1px dotted var(--bgc-04);
 }
@@ -436,6 +466,7 @@ div#patient-medications {
 }
 
 div.medication-card {
+	background-color: whitesmoke;
 	width: 100%;
 	border: 1px solid var(--bgc-05);
 	border-bottom: none;
@@ -453,6 +484,7 @@ h3.medication-header {
 }
 
 div.medication-info {
+	background-color: whitesmoke;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -488,14 +520,7 @@ div.medication-info > span > input:focus {
 }
 
 button#add-medication {
-	background-color: var(--bgc-04);
-	font-family: var(--font-headers);
-	font-size: large;
-	padding: var(--s0);
-	border: 1px solid var(--bgc-05);
-	border-radius: var(--s-5);
 	margin: var(--s-3) 0;
-	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 div#patient-info-container {
@@ -503,4 +528,13 @@ div#patient-info-container {
 	max-width: 320px;
 	max-height: var(--body-height);
 	margin: 0 auto;
+}
+
+@media screen and (max-width: 600px) {
+	div#patient-info-container {
+		max-height: initial;
+	}
+	div.medication-card:last-of-type {
+		border-bottom: 1px solid var(--bgc-05);
+	}
 }
