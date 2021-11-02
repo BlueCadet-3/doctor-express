@@ -408,7 +408,10 @@ span.note {
 div#patient-profile {
 	width: 100%;
 	grid-area: profile;
+	background-color: var(--bgc-05);
+	margin-top: var(--s0);
 	border: 1px solid var(--bgc-05);
+	border-radius: var(--s-5);
 }
 
 div.patient-info {
@@ -421,12 +424,13 @@ div.patient-info {
 }
 
 div.patient-info:last-of-type {
+	border-radius: 0 0 var(--s-5) var(--s-5);
 	border-bottom: none;
 }
 
 h3#patient-info {
 	width: inherit;
-	background-color: var(--bgc-05);
+	background-color: transparent;
 	color: var(--bgc-01);
 	align-items: center;
 	padding: var(--s-5);
@@ -452,16 +456,16 @@ div#patient-medications {
 }
 
 div.medication-card {
-	background-color: whitesmoke;
+	background-color: var(--bgc-05);
 	width: 100%;
 	border: 1px solid var(--bgc-05);
-	border-bottom: none;
+	border-radius: var(--s-5);
+	/* border-bottom: none; */
 }
 
 div.medication-header {
 	width: 100%;
-	background-color: var(--bgc-05);
-	border: 1px solid var(--bgc-05);
+	background-color: transparent;
 	padding: var(--s-5);
 }
 
@@ -480,6 +484,7 @@ div.medication-info {
 }
 
 div.medication-info:last-of-type {
+	border-radius: 0 0 var(--s-5) var(--s-5);
 	border-bottom: none;
 }
 
