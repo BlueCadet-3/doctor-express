@@ -335,16 +335,6 @@ section#patient-portal {
 		"notes notes info";
 }
 
-@media screen and (max-width: 600px) {
-	section#patient-portal {
-		display: flex;
-		flex-direction: column;
-		gap: var(--s0);
-		max-height: var(--body-height);
-		overflow-y: scroll;
-	}
-}
-
 /* Patient notes */
 
 div#patient-notes {
@@ -352,13 +342,6 @@ div#patient-notes {
 	max-height: var(--body-height);
 	grid-area: notes;
 	overflow-y: scroll;
-}
-
-@media screen and (max-width: 600px) {
-	div#patient-notes {
-		min-height: 300px;
-		max-height: unset;
-	}
 }
 
 div#new-note {
@@ -463,6 +446,8 @@ span.patient-value {
 div#patient-medications {
 	grid-area: medications;
 	width: 100%;
+	gap: var(--s0);
+	margin: var(--s0) 0;
 	overflow-y: scroll;
 }
 
@@ -553,8 +538,29 @@ div#patient-info-container {
 		width: 72px;
 		height: auto;
 	}
+	section#patient-portal {
+		display: flex;
+		flex-direction: column;
+		max-height: var(--body-height);
+		gap: var(--s0);
+		overflow-y: scroll;
+	}
+	div#patient-notes {
+		display: flex;
+		flex-direction: column;
+		min-height: var(--body-height);
+		margin: var(--s0) 0;
+	}
 	div#patient-info-container {
+		height: min-content;
+		overflow-y: initial;
+		padding: var(--s0) 0;
+		gap: var(--s0);
+	}
+	div#patient-medications {
 		max-height: initial;
+		gap: var(--s0);
+		overflow-y: initial;
 	}
 	div.medication-card:last-of-type {
 		border-bottom: 1px solid var(--bgc-05);
