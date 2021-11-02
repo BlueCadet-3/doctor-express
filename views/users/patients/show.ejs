@@ -64,6 +64,10 @@
 			<span class="patient-value"><%=user.patient.birthDate.toLocaleString().split(",")[0]; %></span>
 		</div>
 		<div class="patient-info">
+			<span class="patient-key">Age</span>
+			<span class="patient-value"><%= user.patient.getAge; %></span>
+		</div>
+		<div class="patient-info">
 			<span class="patient-key">Height</span>
 			<span class="patient-value"><%=user.patient.height %></span>
 		</div>

@@ -40,6 +40,17 @@ const patientSchema = new Schema({
 	weight: Number,
 }, { timestamps: true });
 
+patientSchema.virtual('getAge').get(function () {
+	const today = new Date();
+	const dob = this.birthDate;
+	const age = today.getFullYear() - dob.getFullYear();
+	const month = today.getMonth() - dob.getMonth();
+	if (month < 0 || (month === 0 && today.getDate() < dob.getDate())) {
+		age--;
+	}
+	return `${age} years, ${month} months`;
+});
+
 const userSchema = new Schema({
 	auth: authSchema,
 	email: String,
