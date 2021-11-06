@@ -37,14 +37,14 @@
 			</div>
 <% } %> <br>
 			<div class="edit-note" id="<%= n._id %>" style="display: none">
-				<form action="/notes/<%= n._id %>?_method=PUT" method="POST">
+				<form class="edit-note" action="/notes/<%= n._id %>?_method=PUT" method="POST">
 					<textarea class="edit-note" name="text">
 						<%= n.note %>
 					</textarea>
 					<button type="submit">Edit Note</button>
 				</form>
 			</div>
-				<span class="note"> <%= n.note %> </span> <br> <br>
+				<span class="note" id="span-<%= n._id %>"> <%= n.note %> </span> <br> <br>
 		</div>
 
 		<% }); %>

@@ -344,28 +344,32 @@ div#patient-notes {
 	overflow-y: scroll;
 }
 
-div#new-note {
+div#new-note,
+div.edit-note {
 	width: 100%;
 }
 
-form#new-note {
+form#new-note,
+form.edit-note {
 	width: inherit;
 }
 
-textarea#new-note {
+textarea#new-note,
+textarea.edit-note {
 	width: 90%;
 	max-width: 66ch;
 	min-height: 120px;
-	font-size: large;
+	font-size: larger;
 	resize: none;
 	padding: var(--s0);
 	border: 1px solid var(--bgc-04);
 	border-radius: var(--s-5);
-	margin: var(--s0);
+	margin: 0 var(--s0) var(--s0);
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-textarea#new-note:focus {
+textarea#new-note:focus,
+textarea.edit-note:focus {
 	border: 1px dotted var(--bgc-05);
 }
 
@@ -376,7 +380,7 @@ div.note-header {
 	flex-direction: row;
 	gap: var(--s0);
 	padding: var(--s0);
-	margin: var(--s0) var(--s-4) 0;
+	margin: var(--s0) var(--s-4);
 	border-radius: var(--s-5);
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
